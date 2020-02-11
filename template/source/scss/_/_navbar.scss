@@ -1,0 +1,69 @@
+.navbar{
+    background-color: color("dark");
+    overflow: hidden;
+    padding: 20px 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    .container{
+        @extend .d-flex;
+        align-items: center;
+    }
+    .navbar-logo img{
+        width: 40px;
+    }
+
+    form{
+        height: 34px;
+        margin-left: 90px;
+        position: relative;
+        input{
+            outline: none;
+            font-size: 20px;
+            background-color: transparent;
+            color: color("white");
+            border: none;
+        }
+
+        button[type="submit"]{
+            border: none;
+            background-color: inherit;
+            color: color("white");
+            font-size: 20px;
+        }
+
+        &:before{
+            $height: 4px;
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: $height;
+            background-color: color("primary");
+            border-radius: $height;
+        }
+    }
+
+    .navbar-nav{
+        @extend .d-flex, .ml-auto;
+        align-items: center;
+        color: color("white");
+        font-weight: bolder;
+        font-size: 20px;
+        li{
+            margin-left: 30px;
+            &:hover{
+                color: color("primary");
+            }
+            &.btn a{
+                background-color: color("primary");
+                padding: 7px 25px;
+                &:hover{
+                    color: color("white");
+                    background-color: darken(color("primary"), 5);
+                }
+            }
+        }
+    }
+
+}

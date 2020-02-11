@@ -1,0 +1,36 @@
+/*
+    Table of content
+        1- Display
+        2- Padding
+        3- Margin
+        4- Links
+        5- Lists
+*/ 
+
+// Display
+$display: (none, flex, block, inline-block);
+
+@each $value in $display{
+    .d-#{$value}{
+        display: $value;
+    }
+}
+
+// Padding
+
+// Margin
+.ml-auto{ margin-left: auto; }
+
+// Links
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+// Lists
+ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}

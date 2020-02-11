@@ -285,3 +285,33 @@ body.show-modal-register{
         display: block;
     }
 }
+
+// Explore
+.explore{
+    margin: 150px 0px 100px 0px;
+    img{
+        width: 100%;
+        max-height: 350px;
+        min-height: 250px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .artist-name{
+        font-weight: bold;
+        font-size: 18px;
+        color: color("dark");
+        &:hover{
+            color: color("primary");
+        }
+    }
+    .artist-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 0px;
+        font-size: 14px;
+    }
+    .songs{
+        font-weight: bold;
+    }
+}

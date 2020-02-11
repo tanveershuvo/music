@@ -11,6 +11,7 @@
   <body></body>
   <nav class="navbar">
     <div class="container">
+      <div class="offset-1"></div>
       <div class="navbar-logo"><a href="#"><img src="/images/logo.svg"/></a></div>
       <form>
         <input type="text" placeholder="Search"/>
@@ -20,18 +21,126 @@
         <li><a href="#">Login</a></li>
         <li class="btn"><a href="#">Join</a></li>
       </ul>
+      <div class="offset-1"></div>
     </div>
   </nav>
-  <section class="hero" style="background-image: url('/images/bg.jpg')">
+  <section class="hero-section d-flex" style="background-image: url('/images/bg.jpg')">
     <div class="overlay"></div>
-    <div class="text-container container">
-      <h1>Stay Where The <mark>Singing</mark> Is</h1>
-      <h1>Evils Don't <mark>Sing</mark></h1>
-      <form>
-        <input type="text" placeholder="Search"/>
-        <button type="submit"> <i class="fas fa-search"></i></button>
-      </form><a class="explor-btn" href="#">Explore</a>
+    <div class="container">
+      <div class="row">
+        <div class="offset-1"></div>
+        <div class="text-container mx-auto col-11">
+          <h1>Stay Where The <mark>Singing</mark> Is</h1>
+          <h1>Evils Don't <mark>Sing</mark></h1>
+          <form>
+            <input type="text" placeholder="Search"/>
+            <button type="submit"> <i class="fas fa-search"></i></button>
+          </form><a class="explor-btn" href="#">Explore</a>
+        </div>
+      </div>
     </div>
   </section>
+  <div class="mobile-section">
+    <div class="container">
+      <div class="row">
+        <div class="offset-1"></div>
+        <div class="col-4 img-wrapper"><img class="mobile-img" src="/images/mobile.png"/><img class="back-img" src="/images/confetti.svg"/></div>
+        <div class="col-6">
+          <div class="text-container">
+            <h2>Listen To The Music Anywhere And Any Time.</h2>
+            <p>Our app is available on Web, iOS and Android. You can download it for free and listen to the music from all over the world any time you want wherever you are.</p>
+            <div class="btns"><a href="#"><img src="/images/app-store.svg"/></a><a href="#"><img src="/images/google-play.svg"/></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upload-section">
+    <div class="container">
+      <div class="row">
+        <div class="offset-1"></div>
+        <div class="col-6">
+          <h2>Upload Your Music And Share It With The World.</h2>
+          <p>Get on our platform to connect with artists, share your sounds and grow your audience. What are you waiting for?</p>
+          <div><a href="#">Upload Yours</a></div>
+        </div>
+        <div class="col-4"><img src="/images/upload.svg"/></div>
+      </div>
+    </div>
+  </div>
+  <div class="create-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <h2>We Can't Wait For You To Join Our Community.</h2>
+          <div><a class="big-btn" href="#">Create Account</a></div>
+          <div class="footer"><span>Already have an account? <a href="#">Login</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal modal-login">
+    <div class="overlay"></div>
+    <div class="form-container">
+      <form>
+        <div class="form-group">
+          <label for="email"><span>Email</span><small class="error">Invliad email and password</small></label>
+          <input class="invalid" type="email" name="email" id="email"/>
+        </div>
+        <div class="form-group">
+          <label for="password"> <span>Password</span></label>
+          <input type="password" name="password" id="password"/>
+        </div>
+        <div class="form-group">
+          <button type="submit">Login</button>
+        </div>
+        <div class="msg"><span>Don't have an account?  <a href="#">Register</a></span></div>
+      </form>
+    </div>
+  </div>
+  <div class="modal modal-register">
+    <div class="form-container">
+      <form>
+        <div class="form-group">
+          <label for="name"><span>Username</span></label>
+          <input type="text" name="name" id="name"/>
+        </div>
+        <div class="form-group">
+          <label for="email"><span>Email</span></label>
+          <input type="email" name="email" id="email"/>
+        </div>
+        <div class="form-group">
+          <label for="password"> <span>Password</span></label>
+          <input type="password" name="password" id="password"/>
+        </div>
+        <div class="form-group">
+          <label for="password"> <span>Confirm Password</span></label>
+          <input type="password" name="password" id="password"/>
+        </div>
+        <div class="form-group">
+          <button type="submit">Login</button>
+        </div>
+        <div class="msg"><span>Don't have an account?  <a href="#">Register</a></span></div>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="offset-1"></div>
+        <div class="wrapper col-10">
+          <ul class="icons">
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+          <div>
+            <p>Insatll On: <a href="#">Android </a>And <a href="#">IOS</a></p>
+          </div>
+        </div>
+        <div class="offset-1"></div>
+      </div>
+    </div>
+  </footer>
   <script src="/js/app.min.js"></script>
 </html>

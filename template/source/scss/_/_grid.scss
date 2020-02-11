@@ -26,17 +26,21 @@ $gutter: 30px;
 [class^="col"]{
     padding-right: $gutter / 2;
     padding-left: $gutter / 2;
-    padding: 15px;
-    span{
-        background-color: #333;
-        color: #fff;
-        display: block;
-    }
+}
+[class^="offset"]{
+    display: none;
 }
 
 @for $i from 1 through 12{
     .col-#{$i}{
         width: (100% / 12) * $i
+    }
+
+    @include lg{
+        .offset-#{$i}{
+            display: block;
+            width: (100% / 12) * $i;
+        }
     }
 }
 

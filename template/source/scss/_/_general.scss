@@ -10,7 +10,7 @@ body{
 }
 
 // Hero section
-.hero{
+.hero-section{
     @extend .d-flex;
     height: 100vh;
     min-height: 600px;
@@ -32,8 +32,10 @@ body{
         opacity: .65;
         z-index: 0;
     }
-    .text-container{
+    .container{
         z-index: 1;
+    }
+    .text-container{
         h1{
             color: color("white");
             font-size: 52px;
@@ -77,5 +79,202 @@ body{
                 background-color: darken(color("primary"), 5);
             }
         }
+    }
+}
+
+// Mobile Section
+.mobile-section{
+    background-color: color("primary");
+    color: color("white");
+    height: 100vh;
+    min-height: 700px;
+    .row, .container{
+        height: 100%;
+    }
+    
+  
+    h2{
+       font-size: 32px;
+       padding: 0px;
+       margin: 0px; 
+    }
+    p{
+        margin: 30px 0px 50px 0px;
+        padding: 0px;
+        font-size: 20px;
+    }
+    [class^="col"]{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+    .col:nth-child(1){
+        z-index: 1;
+    }
+    .col:nth-child(2){
+        z-index: 2;
+    }
+    
+    .img-wrapper{
+        position: relative;
+        .mobile-img{
+            width: 100%;
+            z-index: 1;
+        }
+        .back-img{
+            position: absolute;
+            width: 150%;
+            left: -120px;
+            z-index: 0;
+        }
+    }
+
+    .btns{
+        display: flex;
+        a{
+            display: block;
+            margin-right: 20px;
+            img{
+                width: 200px;
+            }
+        }
+    }
+}
+
+// Upload Section
+.upload-section{
+    @extend .mobile-section;
+    background-color: white;
+    color: color("dark");
+    img{
+        width: 100%;
+    }
+    a{
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 15px 40px;
+        background-color: color("primary");
+        color: color("white");
+        &:hover{
+            background-color: darken(color("primary"), 5);
+        }
+    }
+}
+
+
+//  Create Account
+.create-section{
+    text-align: center;
+    padding: 100px 0px 150px 0px;
+    .container, .row{
+        height: 100%;
+    }
+    [class^="col"]{
+        @extend .d-flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    h2{
+        font-size: 32px;
+        margin: 0px;
+    }
+    span{
+        font-size: 20px;
+    }
+    a{
+        display: inline-block;
+        color: color("white");
+        background-color: color("primary");
+        font-weight: bold;
+        font-size: 20px;
+        padding: 10px 38px;
+        &:hover{
+            background-color: darken(color("primary"), 5);
+        }
+        &.big-btn{
+            margin: 50px 0px 30px 0px;
+            padding: 20px 50px;
+            font-size: 24px;
+        }
+    }
+}
+
+
+// Modals
+.modal{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 101;
+    display: none;
+    overflow-y: auto;
+    .overlay{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: color("dark");
+        opacity: .5;
+    }
+    .form-container{
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        min-height: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        background-color: transparentize($color: color("dark"), $amount: .5)
+    }
+    form{
+        background-color: color("light");
+        padding: 30px;
+        width: 500px;
+        input{
+            width: 100%;
+        }
+        button[type="submit"]{
+            border: none;
+            background-color: color("primary");
+            color: color("white");
+            display: block;
+            width: 100%;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+            &:hover{
+                background-color: darken(color("primary"), 5);
+            }
+        }
+        .msg{
+            font-size: 16px;
+            a{
+                font-weight: bold;
+                color: color("primary");
+                &:hover{
+                    color: darken(color("primary"), 5);
+                }
+            }
+        }
+    }
+}
+body.show-modal-login{
+    overflow: hidden;
+    .modal-login{
+        display: block;
+    }
+}
+body.show-modal-register{
+    overflow: hidden;
+    .modal-register{
+        display: block;
     }
 }

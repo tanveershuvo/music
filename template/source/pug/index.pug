@@ -1,13 +1,55 @@
 extends inc/layout.pug
 
 block content
-    section.hero(style="background-image: url('/images/bg.jpg')")
+    section.hero-section.d-flex(style="background-image: url('/images/bg.jpg')")
         .overlay
-        .text-container.container
-            h1 Stay Where The <mark>Singing</mark> Is
-            h1 Evils Don't <mark>Sing</mark>
-            form
-                input(type="text", placeholder="Search")
-                button(type="submit") 
-                    i.fas.fa-search
-            a(href="#").explor-btn Explore
+        .container
+            .row
+                .offset-1
+                .text-container.mx-auto.col-11
+                    h1 Stay Where The <mark>Singing</mark> Is
+                    h1 Evils Don't <mark>Sing</mark>
+                    form
+                        input(type="text", placeholder="Search")
+                        button(type="submit") 
+                            i.fas.fa-search
+                    a(href="#").explor-btn Explore
+    .mobile-section
+        .container
+            .row
+                .offset-1
+                .col-4.img-wrapper
+                    img(src="/images/mobile.png").mobile-img
+                    img(src="/images/confetti.svg").back-img
+                .col-6
+                    .text-container
+                        h2 Listen To The Music Anywhere And Any Time.
+                        p Our app is available on Web, iOS and Android. You can download it for free and listen to the music from all over the world any time you want wherever you are.
+                        .btns
+                            a(href="#")
+                                img(src="/images/app-store.svg")
+                            a(href="#")
+                                img(src="/images/google-play.svg")
+    .upload-section
+        .container
+            .row
+                .offset-1
+                .col-6
+                    h2 Upload Your Music And Share It With The World.
+                    p Get on our platform to connect with artists, share your sounds and grow your audience. What are you waiting for?
+                    div
+                        a(href="#") Upload Yours
+                .col-4
+                    img(src="/images/upload.svg")
+    .create-section
+        .container
+            .row
+                .col-6.mx-auto
+                    h2 We Can't Wait For You To Join Our Community.
+                    div
+                        a.big-btn(href="#") Create Account
+                    .footer
+                        span Already have an account? 
+                            a(href="#") Login
+    
+    include inc/modals.pug

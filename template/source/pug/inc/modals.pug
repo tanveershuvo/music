@@ -1,0 +1,43 @@
+.modal.modal-login
+    .overlay
+    .form-container
+        form
+            .form-group
+                label(for="email")
+                    span Email
+                    small.error Invliad email and password
+                input(type="email", name="email", id="email").invalid
+            .form-group
+                label(for="password") 
+                    span Password
+                input(type="password", name="password", id="password")
+            .form-group
+                button(type="submit") Login
+            .msg
+                span Don't have an account?  
+                    a(href="#") Register
+.modal.modal-register
+    //- .overlay
+    .form-container
+        form
+            .form-group
+                label(for="name")
+                    span Username
+                input(type="text", name="name", id="name")
+            .form-group
+                label(for="email")
+                    span Email
+                input(type="email", name="email", id="email")
+            .form-group
+                label(for="password") 
+                    span Password
+                input(type="password", name="password", id="password")
+            .form-group
+                label(for="password") 
+                    span Confirm Password
+                input(type="password", name="password", id="password")
+            .form-group
+                button(type="submit") Login
+            .msg
+                span Don't have an account?  
+                    a(href="#") Register

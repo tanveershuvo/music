@@ -1,0 +1,45 @@
+label{
+    display: block;
+    color: color("dark");
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea{
+    display: block;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: color("white");
+    border: none;
+    box-shadow: 3px 3px 6px transparentize($color: color("black"), $amount: 1 - .16);
+    outline:none;
+    &:focus{
+        box-shadow: 0px 0px 6px color("primary");
+    }
+    &.invalid{
+        background-color: #FFE4E4;
+    }
+}
+
+
+.form-group{
+    &:not(:last-child){
+        margin-bottom: 30px;
+    }
+}
+
+button[type="submit"]{
+    cursor: pointer;
+}
+
+.error{
+    font-size: 14px;
+    color: color("danger");
+}

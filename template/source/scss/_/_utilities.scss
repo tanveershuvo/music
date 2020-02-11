@@ -20,7 +20,10 @@ $display: (none, flex, block, inline-block);
 
 // Margin
 .ml-auto{ margin-left: auto; }
-
+.mr-auto{ margin-right: auto; }
+.mx-auto{
+    @extend .ml-auto, .mr-auto;
+}
 // Links
 a{
     text-decoration: none;

@@ -1,2 +1,19 @@
 
+footer.footer
+    .container
+        .row
+            .offset-1
+            .wrapper.col-10
+                ul.icons
+                    -for(let c of ['twitter', 'dribbble', 'linkedin-in'])
+                        li
+                            a(href="#")
+                                i(class="fab fa-" + c)
+                div
+                    p Insatll On: 
+                        a(href="#") Android 
+                        |And 
+                        a(href="#") IOS
+            .offset-1
+
 script(src="/js/app.min.js")

@@ -1,0 +1,47 @@
+footer.footer{
+    background-color: color("dark");
+    color: color("white");
+    padding: 20px 0px;
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+    
+    ul{
+        display: flex;
+        margin: 0px;
+        padding: 0px;
+        li{
+            margin: 0px 5px;
+            font-size: 20px;
+        }
+        i{
+            color: transparentize($color: color("white"), $amount: .5);
+            &:hover{
+                &.fa-twitter{
+                    color: #00ACED;
+                }
+                &.fa-dribbble{
+                    color: #EA4C89;
+                }
+                &.fa-linkedin-in{
+                    color: #0072B1;
+                }
+            }
+            
+        }
+    }
+    p{
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px; 
+        a{
+            opacity:.5;
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+    
+}

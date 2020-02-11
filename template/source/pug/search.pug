@@ -1,0 +1,20 @@
+extends inc/layout.pug
+
+block content
+    section.search-section
+         .container
+            .row
+                .offset-1
+                .col-10
+                    h1 Search for: "HipHop"
+            -for(let i = 0; i < 20; i++)
+                .row
+                    .offset-1
+                    .col-10.p-0.search-song
+                        .col-2
+                            a(href="#")
+                                img.user-img(src="/images/placeholder ("+ ((i % 8) + 1) +").jpg")
+                            a(href="#").user-name John Doe
+                        .col-10
+                            include inc/song.pug
+                    .offset-1

@@ -287,7 +287,7 @@ body.show-modal-register{
 }
 
 // Explore
-.explore-section, .user-section{
+.explore-section, .user-section, .search-section{
     margin: 150px 0px 100px 0px;
 }
 .artist-card{
@@ -400,5 +400,24 @@ body.show-modal-register{
             }
         }
         
+    }
+}
+
+.search-song{
+    display: flex;
+    margin-bottom: 30px;
+    img{
+        width: 100%;
+        max-height: 150px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .user-name{
+        font-weight: bold;
+        font-size: 12px;
+        color: color("dark");
+        &:hover{
+            color: color("primary");
+        }
     }
 }

@@ -1,4 +1,13 @@
 extends inc/layout.pug
 
 block content
-    
+    section.hero(style="background-image: url('/images/bg.jpg')")
+        .overlay
+        .text-container.container
+            h1 Stay Where The <mark>Singing</mark> Is
+            h1 Evils Don't <mark>Sing</mark>
+            form
+                input(type="text", placeholder="Search")
+                button(type="submit") 
+                    i.fas.fa-search
+            a(href="#").explor-btn Explore

@@ -1,0 +1,19 @@
+extends inc/layout.pug
+
+block content
+    section.user-section
+        .container
+            .row
+                .offset-1
+                .col-3.artist-card-wrapper
+                    .artist-card
+                            a(href="/user.html")
+                                img(src=`/images/placeholder (1).jpg`, alt="artist name")
+                            a(href="/user.html").artist-name John Doe
+                            .artist-info
+                                .songs
+                                    |32 Songs
+                                .plays <i class="fas fa-play"></i> 50.7k
+                .col-7
+                    -for(let i = 0; i < 20; i++)
+                        include inc/song.pug

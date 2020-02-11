@@ -287,8 +287,10 @@ body.show-modal-register{
 }
 
 // Explore
-.explore{
+.explore-section, .user-section{
     margin: 150px 0px 100px 0px;
+}
+.artist-card{
     img{
         width: 100%;
         max-height: 350px;
@@ -313,5 +315,90 @@ body.show-modal-register{
     }
     .songs{
         font-weight: bold;
+    }
+}
+.artist-card-wrapper{
+    position: relative;
+    .artist-card{
+        position: sticky;
+        top: 150px;
+    }
+}
+
+.song-card{
+    margin-bottom: 30px;
+    .body{
+        background-color: color("light");
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: -3px -3px 6px color("white"), 3px 3px 6px transparentize(color("black"), 1 - .44);
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        &.playing{
+            background-color: color("primary");
+            color: white;
+            .play-icon{
+                color: color("white");
+            }
+        }
+    }
+    .info{
+        flex-grow: 1;
+    }
+    .play-icon{
+        $size: 70px;
+        height: $size;
+        width: $size;
+        border-radius: $size;
+        box-shadow: -3px -3px 6px color("white"), 3px 3px 6px transparentize(color("black"), 1 - .44);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        margin-right: 20px;
+        color: color("primary");
+        cursor: pointer;
+        &:hover{
+            background-color: darken(color("light"), 3);
+        }
+    }
+    .song-name{
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .song-length{
+        font-size: 14px; 
+        font-weight: bold;
+    }
+    .song-plays, .song-date{
+        font-size: 10px;
+    }
+    .info-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:not(:last-child){
+            margin-bottom: 10px;
+        }
+    }
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        li{
+            margin-right: 5px;
+            margin-bottom: 5px;
+            background-color: color("primary");
+            color: color("white");
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 12px;
+            &:hover{
+                background-color: darken(color("primary"), 5);
+            }
+        }
+        
     }
 }

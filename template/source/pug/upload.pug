@@ -1,0 +1,37 @@
+extends inc/layout.pug
+
+block content
+    section.password-section.section
+        .container
+            .row
+                .offset-1
+                .col-10
+                    form.w-100.upload
+                        -for(let i = 0; i < 10; i++)
+                            .row
+                                .col-1.flex-end.number
+                                    .form-group.m-0 #{i + 1}.
+                                .form-group.m-0.col-4
+                                    label(for="email") 
+                                        span File Name
+                                    input(type="email", id="email", autocomplete="off")
+                                .form-group.m-0.col-5
+                                    label(for="name") 
+                                        span Song Name
+                                    input(type="text", id="name", autocomplete="off")
+                                .col-1.flex-end
+                                    .form-group.m-0.btn-container
+                                    button.delete-btn <i class="fas fa-times"></i>
+                        .row.form-group.col-12
+                            .progress
+                                .bar
+                        .row.form-group.col-12
+                            div.upload-box.w-100
+                                small.error You can't upload more than 10 songs at once
+                                .box.invalid
+                                    i.fas.fa-cloud-upload-alt.icon
+                                    .text
+                                        h2.header Upload Your Songs
+                                        h3.sub-header Drag & Drop
+                        .form-group.col-10
+                            button(type="submit") Upload

@@ -5,6 +5,7 @@
         3- Margin
         4- Links
         5- Lists
+        6- Flex
 */ 
 
 // Display
@@ -14,6 +15,10 @@ $display: (none, flex, block, inline-block);
     .d-#{$value}{
         display: $value;
     }
+}
+
+.w-100{
+    width: 100%;
 }
 
 // Padding
@@ -26,6 +31,9 @@ $display: (none, flex, block, inline-block);
 .mr-auto{ margin-right: auto; }
 .mx-auto{
     @extend .ml-auto, .mr-auto;
+}
+.m-0{
+    margin: 0px !important;
 }
 // Links
 a{
@@ -40,4 +48,10 @@ ul{
     list-style: none;
     padding: 0px;
     margin: 0px;
+}
+
+// Flex
+.flex-end{
+    display: flex;
+    align-items: flex-end;
 }

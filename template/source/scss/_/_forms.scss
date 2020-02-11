@@ -27,6 +27,26 @@ textarea{
         background-color: #FFE4E4;
     }
 }
+form.w-100{
+    width: 100%;
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea{
+        width: 100%;
+    }
+    button[type="submit"]{
+        background-color: color("primary");
+        color: color("white");
+        font-size: 20px;
+        padding: 5px 20px;
+        border: none;
+        font-weight: bold;
+        &:hover{
+            background-color: darken(color("primary"), 5);
+        }
+    }
+}
 
 
 .form-group{
@@ -42,4 +62,15 @@ button[type="submit"]{
 .error{
     font-size: 14px;
     color: color("danger");
+}
+
+.progress{
+    height: 25px;
+    width: 100%;
+    box-shadow: -3px -3px 6px color("white") inset, 3px 3px 6px transparentize(color("black"), 1 - .44) inset;
+    .bar{
+        width: 50%;
+        height: 100%;
+        background-color: color("primary");
+    }
 }

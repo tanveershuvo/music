@@ -1,0 +1,27 @@
+extends inc/layout.pug
+
+block content
+    section.password-section.section
+        .container
+            .row
+                .offset-1
+                .col-5
+                    form.w-100
+                        .form-group
+                            label(for="email") 
+                                span Email
+                            input(type="email", id="email")
+                        .form-group
+                            label(for="name") 
+                                span Username
+                            input(type="text", id="name")
+                        .form-group
+                            .progress
+                                .bar
+                        .form-group
+                            button(type="submit") Save
+                .col-3
+                    div.upload-img-container
+                        div.msg
+                            h2 Upload New Photo
+                        img(src="/images/placeholder (1).jpg")

@@ -4,17 +4,17 @@ block content
     section.search-section.section
         .container
             .row
-                .offset-1
-                .col-10
+                .offset-md-1
+                .col-10.col-mdr-12
                     h1 Search for: "HipHop"
             -for(let i = 0; i < 20; i++)
                 .row
-                    .offset-1
-                    .col-10.p-0.search-song
+                    .offset-md-1
+                    .col-10.p-0.search-song.col-mdr-12
                         .col-2
                             a(href="#")
                                 img.user-img(src="/images/placeholder ("+ ((i % 8) + 1) +").jpg")
                             a(href="#").user-name John Doe
                         .col-10
                             include inc/song.pug
-                    .offset-1
+                    .offset-md-1

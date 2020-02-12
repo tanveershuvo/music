@@ -9,9 +9,14 @@
     .container{
         @extend .d-flex;
         align-items: center;
+        @include mdr{
+        }
     }
     .navbar-logo img{
         width: 40px;
+        @include mdr{
+         width: 30px;   
+        }
     }
     .menu-icon img{
         cursor: pointer;
@@ -21,6 +26,9 @@
         height: 34px;
         margin-left: 50px;
         position: relative;
+        @include mdr{
+            margin-left: 20px;
+        }
         input{
             display: inline;
             outline: none;
@@ -32,6 +40,9 @@
             padding: 0px;
             &:focus{
                 box-shadow: none;
+            }
+            @include mdr{
+                width: 175px;
             }
         }
 
@@ -60,14 +71,23 @@
         color: color("white");
         font-weight: bolder;
         font-size: 20px;
+        @include mdr{
+            font-size: 18px;
+        }
         li{
             margin-left: 30px;
+            @include mdr{
+                margin-left: 20px;
+            }
             &:hover{
                 color: color("primary");
             }
             &.btn a{
                 background-color: color("primary");
                 padding: 7px 25px;
+                @include mdr{
+                    padding: 5px 20px;
+                }
                 &:hover{
                     color: color("white");
                     background-color: darken(color("primary"), 5);

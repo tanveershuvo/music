@@ -1,11 +1,11 @@
 extends inc/layout.pug
 
 block content
-    section.password-section.section
+    section.settings-section.section
         .container
             .row
-                .offset-1
-                .col-5
+                .offset-md-1
+                .col-5.col-mdr-12
                     form.w-100
                         .form-group
                             label(for="email") 
@@ -20,7 +20,7 @@ block content
                                 .bar
                         .form-group
                             button(type="submit") Save
-                .col-3
+                .col-3.col-mdr-12
                     div.upload-img-container
                         div.msg
                             h2 Upload New Photo

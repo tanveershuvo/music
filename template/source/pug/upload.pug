@@ -4,8 +4,8 @@ block content
     section.password-section.section
         .container
             .row
-                .offset-1
-                .col-10
+                .offset-md-1
+                .col-10.col-mdr-12
                     form.w-100.upload
                         -for(let i = 0; i < 10; i++)
                             .row
@@ -19,12 +19,9 @@ block content
                                     label(for="name") 
                                         span Song Name
                                     input(type="text", id="name", autocomplete="off")
-                                .col-1.flex-end
+                                .col-1.flex-end.p-0
                                     .form-group.m-0.btn-container
                                     button.delete-btn <i class="fas fa-times"></i>
-                        .row.form-group.col-12
-                            .progress
-                                .bar
                         .row.form-group.col-12
                             div.upload-box.w-100
                                 small.error You can't upload more than 10 songs at once
@@ -33,5 +30,8 @@ block content
                                     .text
                                         h2.header Upload Your Songs
                                         h3.sub-header Drag & Drop
-                        .form-group.col-10
+                        .row.form-group.col-12
+                            .progress
+                                .bar
+                        .form-group.col-10.col-mdr-12
                             button(type="submit") Upload

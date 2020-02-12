@@ -1,12 +1,21 @@
 *{
     box-sizing: border-box;
 }
+body, html{
+    overflow-x: hidden;
+    @include mdr{
+        min-width: 600px;
+        overflow-x: auto;
+    }
+}
 body{
     padding: 0px;
     margin: 0px;
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
     background-color: color("light");
+    overflow-x: hidden;
+
 }
 
 // Hero section
@@ -36,10 +45,17 @@ body{
         z-index: 1;
     }
     .text-container{
+        @include mdr{
+            text-align: center;
+            margin: 0px auto;
+        }
         h1{
             color: color("white");
             font-size: 52px;
             margin: 0px 0px 20px 0px;
+            @include mdr{
+                font-size: 32px;
+            }
             mark{
                 background-color: transparent;
                 color: color("primary");
@@ -49,6 +65,9 @@ body{
             @extend .d-flex;
             margin-top: 50px;
             width: 50%;
+            @include mdr{
+                width: 100%;
+            }
             input{
                 outline: none;
                 padding: 10px 15px;
@@ -85,6 +104,10 @@ body{
             &:hover{
                 background-color: darken(color("primary"), 5);
             }
+            @include mdr{
+                font-size: 20px;
+                padding: 8px 40px;
+            }
         }
     }
 }
@@ -95,27 +118,46 @@ body{
     color: color("white");
     height: 100vh;
     min-height: 700px;
+    @include mdr{
+        height: auto;
+        padding: 40px 0px;
+    }
     .row, .container{
         height: 100%;
     }
     
+    @include mdr{
+        text-align: center;
+    }
   
     h2{
        font-size: 32px;
        padding: 0px;
        margin: 0px; 
+       @include mdr{
+        font-size: 24px;
+        margin-top: 30px;
+       }
     }
     p{
         margin: 30px 0px 50px 0px;
         padding: 0px;
         font-size: 20px;
+        @include mdr{
+            margin: 20px 0px 30px 0px;
+            font-size: 16px;
+        }
     }
     [class^="col"]{
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         position: relative;
+        display: flex;
+    }
+    @include md{
+        [class^="col"]{
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+        }
     }
     .col:nth-child(1){
         z-index: 1;
@@ -129,22 +171,38 @@ body{
         .mobile-img{
             width: 100%;
             z-index: 1;
+            @include mdr{
+                width: 50%;
+                margin: 0px auto;
+            }
         }
         .back-img{
             position: absolute;
             width: 150%;
             left: -120px;
             z-index: 0;
+            @include mdr{
+                width: 60%;
+                left: 50%;
+                top: -50px;
+                transform: translateX(-50%);
+            }
         }
     }
 
     .btns{
         display: flex;
+        @include mdr{
+            justify-content: center;
+        }
         a{
             display: block;
             margin-right: 20px;
             img{
                 width: 200px;
+                @include mdr{
+                    width: 150px;
+                }
             }
         }
     }
@@ -155,6 +213,15 @@ body{
     @extend .mobile-section;
     background-color: white;
     color: color("dark");
+    @include mdr{
+        .row{
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        .text-container{
+            flex-direction: column;
+        }
+    }
     img{
         width: 100%;
     }
@@ -165,6 +232,10 @@ body{
         padding: 15px 40px;
         background-color: color("primary");
         color: color("white");
+        @include mdr{
+            font-size: 20px;
+            padding: 10px 30px;
+        }
         &:hover{
             background-color: darken(color("primary"), 5);
         }
@@ -187,9 +258,15 @@ body{
     h2{
         font-size: 32px;
         margin: 0px;
+        @include mdr{
+            font-size: 24px;
+        }
     }
     span{
         font-size: 20px;
+        @include mdr{
+            font-size: 16px;
+        }
     }
     a{
         display: inline-block;
@@ -198,6 +275,10 @@ body{
         font-weight: bold;
         font-size: 20px;
         padding: 10px 38px;
+        @include mdr{
+            font-size: 16px;
+            padding: 8px 30px;
+        }
         &:hover{
             background-color: darken(color("primary"), 5);
         }
@@ -205,6 +286,10 @@ body{
             margin: 50px 0px 30px 0px;
             padding: 20px 50px;
             font-size: 24px;
+            @include mdr{
+                font-size: 20px;
+                padding: 15px 30px;
+            }
         }
     }
 }
@@ -290,6 +375,13 @@ body.show-modal-register{
 .section{
     margin: 150px 0px 100px 0px;
 }
+.settings-section{
+    @include mdr{
+        .row{
+            flex-direction: column-reverse;
+        }
+    }
+}
 .artist-card{
     img{
         width: 100%;
@@ -297,6 +389,10 @@ body.show-modal-register{
         min-height: 250px;
         object-fit: cover;
         object-position: center;
+        @include mdr{
+            max-height: 300px;
+            min-height: 200px;
+        }
     }
     .artist-name{
         font-weight: bold;
@@ -304,6 +400,9 @@ body.show-modal-register{
         color: color("dark");
         &:hover{
             color: color("primary");
+        }
+        @include mdr{
+            font-size: 16px;
         }
     }
     .artist-info{
@@ -319,6 +418,9 @@ body.show-modal-register{
 }
 .artist-card-wrapper{
     position: relative;
+    @include mdr{
+        margin-bottom: 50px;
+    }
     .artist-card{
         position: sticky;
         top: 150px;
@@ -425,6 +527,9 @@ body.show-modal-register{
 // Settings
 .upload-img-container{
     position: relative;
+    @include mdr{
+        margin-bottom: 50px;
+    }
     .msg{
         position: absolute;
         bottom: 0px;
@@ -450,7 +555,7 @@ body.show-modal-register{
     }
     img{
         width: 100%;
-        max-width: 400px;
+        max-height: 400px;
         object-fit: cover;
         object-position: center;
     }

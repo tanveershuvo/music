@@ -2,14 +2,13 @@
     cursor: pointer;
 }
 .player{
-    height: 100px;
+    height: 90px;
     width: 100%;
     background-color: color("dark");
     color: color("white");
     position: fixed;
     bottom: 0px;
     z-index: 103;
-    border-top: 4px solid color("primary");
     .close-icon{
         @extend .pointer;
         position: absolute;
@@ -18,6 +17,11 @@
         font-size: 24px;
         transform: translateY(-50%);
         opacity: .5;
+        @include mdr{
+            font-size: 20px;
+            right: 20px;
+            top: 20px;
+        }
         &:hover{
             opacity: 1;
         }
@@ -29,6 +33,10 @@
         display: flex;
         align-items: cneter;
         justify-content: space-between;
+        @include mdr{
+            width: 100%;
+            padding: 0px 10px;
+        }
     }
     .d-flex{
         align-items: center;
@@ -38,6 +46,9 @@
     
     .user{
         margin-right: 50px;
+        @include mdr{
+            margin-right: 20px;
+        }   
         img{
             width: 60px;
             max-height: 60px;
@@ -48,7 +59,7 @@
     }
     .user-info{
         font-weight: bold;
-        & > *{
+        .username, span{
             display: block;
         }
         .username{
@@ -71,11 +82,19 @@
             &:hover{
                 color: darken(color("white"), 10);
             }
+            @include mdr{
+                margin-right: 10px;
+                font-size: 20px;
+            }
         }
         .repeat{
             margin-right: 20px;
             font-size: 16px;
             color: transparentize($color: color("white"), $amount: .5);
+            @include mdr{
+                margin-right: 10px;
+                font-size: 14px;
+            }
             &.active{
                 color: color("white");
             }
@@ -83,6 +102,10 @@
         .number{
             font-size: 14px;
             margin: 0px 10px;
+            @include mdr{
+                font-size: 12px;
+                margin: 0px 5px;
+            }
 
         }
     }
@@ -105,7 +128,7 @@
     }
 }
 
-.something{
+.slider{
     flex-grow: 1;
     $height: 10px;
     .full{
@@ -113,7 +136,11 @@
         width: 100%;
         height: $height;
         border-radius: $height;
-        background-color: transparentize($color: color("primary"), $amount: .5)
+        background-color: transparentize($color: color("primary"), $amount: .5);
+        @include mdr{
+            height: 6px;
+            border-radius: 5px;
+        }
     }
     .finished{
         position: relative;
@@ -133,6 +160,11 @@
         border-radius: 50%;
         background-color: color("white");
         border: 5px solid color("primary");
+        @include mdr{
+            height: 17px;
+            width: 17px;
+            border: 3px solid color("primary");
+        }
     }
 
 }

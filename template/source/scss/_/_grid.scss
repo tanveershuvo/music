@@ -9,6 +9,17 @@ $gutter: 30px;
     }
 }
 
+@mixin md(){
+    @media (min-width: 1000px){
+        @content;
+    }
+}
+@mixin mdr(){
+    @media (max-width: 900px){
+        @content;
+    }
+}
+
 
 .container{
     margin-left: auto;
@@ -16,11 +27,24 @@ $gutter: 30px;
     @include lg{
         width: 1200px;
     }
+    @include md{
+        width: 1000px;
+    }
+    @include mdr(){
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
 }
 
 .row{
     display: flex;
     flex-wrap: wrap;
+}
+.col{
+    padding-right: $gutter / 2;
+    padding-left: $gutter / 2;
 }
 
 // [class^="col-"]{
@@ -33,16 +57,36 @@ $gutter: 30px;
 
 @for $i from 1 through 12{
     .col-#{$i}{
+        @extend .col;
         width: (100% / 12) * $i;
-        padding-right: $gutter / 2;
-        padding-left: $gutter / 2;
     }
 
     @include lg{
+        .col-lg-#{$i}{
+            padding-left: $gutter / 2;
+            width: (100% / 12) * $i;
+        }
         .offset-#{$i}{
             display: block;
             width: (100% / 12) * $i;
         }
+    }
+    @include md{
+        .col-md-#{$i}{
+            padding-left: $gutter / 2;
+            width: (100% / 12) * $i;
+        }
+        .offset-md-#{$i}{
+            display: block;
+            width: (100% / 12) * $i;
+        }
+    }
+    @include mdr{
+        .col-mdr-#{$i}{
+            padding-left: $gutter / 2;
+            width: (100% / 12) * $i;
+        }
+        
     }
 }
 
@@ -52,4 +96,7 @@ $gutter: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px 80px;
+    @include mdr{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

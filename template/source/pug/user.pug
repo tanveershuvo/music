@@ -4,8 +4,8 @@ block content
     section.user-section.section
         .container
             .row
-                .offset-1
-                .col-3.artist-card-wrapper
+                .offset-md-1
+                .col-3.artist-card-wrapper.col-mdr-12
                     .artist-card
                             a(href="/user.html")
                                 img(src=`/images/placeholder (1).jpg`, alt="artist name")
@@ -14,6 +14,6 @@ block content
                                 .songs
                                     |32 Songs
                                 .plays <i class="fas fa-play"></i> 50.7k
-                .col-7
+                .col-7.col-mdr-12
                     -for(let i = 0; i < 20; i++)
                         include inc/song.pug

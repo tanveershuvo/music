@@ -18,4 +18,34 @@ footer.footer
 
 include menu.pug
 
+//- Player
+
+div.player
+    .close-icon
+        i.fas.fa-times
+    .player-container
+        section.user.d-flex
+            img(src="/images/placeholder (" +  (Math.floor(Math.random() * 8) + 1) + ").jpg")
+            .user-info
+                a.username(href="#") John Doe
+                span Song name
+        section.controls.d-flex
+            span.play <i class="fas fa-play"></i> <!-- <i class="fas fa-pause"></i> -->
+            span.repeat.active <i class="fas fa-retweet"></i>
+            span.number 3:35
+            .something
+                .full
+                    .finished
+                        .circle
+            span.number 2:04
+        section.sound.d-flex
+            .icon
+                i.fas.fa-volume-up
+                <!-- <i class="fas fa-volume-mute"></i> -->
+            .something
+                .full
+                    .finished
+                        .circle
+
+
 script(src="/js/app.min.js")

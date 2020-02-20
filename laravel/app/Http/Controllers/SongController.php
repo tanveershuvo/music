@@ -25,7 +25,11 @@ class SongController extends Controller
      */
     public function index()
     {
-        $songs = Song::paginate(10);
+        $songs = Song::with("user")->paginate(10);
+
+        $songs->getCollection()->transform(function($s){
+            return $this->songUrl($s);
+        });
 
         return response()->json($songs, 200);
     }
@@ -200,6 +204,11 @@ class SongController extends Controller
     // Get the song public url
     protected function songUrl(Song $song){
         $song->path = Storage::url($song->path);
+
+        if($song->user){
+            $song->user->pic = Storage::url($song->user->pic);
+        }
+
         return $song;
     }
 
@@ -213,4 +222,20 @@ class SongController extends Controller
         return $duration;
     }
     
+
+    /**
+     * Search for songs
+     */
+    public function search($query){
+        $songs = Song::search($query)->paginate(10);
+
+        $songs->load("user");
+
+        $songs->getCollection()->transform(function($s){
+            return $this->songUrl($s);
+        });
+
+        return response()->json($songs, 200);
+    }
+
 }

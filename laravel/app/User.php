@@ -38,4 +38,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    
+    public function songs(){
+        return $this->hasMany("App\Song", "user_id", "id");
+    }
+    
 }

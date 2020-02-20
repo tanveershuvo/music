@@ -19,4 +19,9 @@ class Song extends Model
     public function setTagsAttribute($tags){
         $this->attributes["tags"] = implode(",", $tags);
     } 
+
+
+    public function user(){
+        return $this->belongsTo("App\User", "user_id", "id");
+    }
 }

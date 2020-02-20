@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class SongController extends Controller
 {
@@ -21,7 +23,9 @@ class SongController extends Controller
      */
     public function index()
     {
-        //
+        $songs = Song::paginate(10);
+
+        return response()->json($songs, 200);
     }
 
     /**
@@ -42,7 +46,38 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request
+        $results = Validator::make($request->all(), [
+            "name"  => "required|max: 20|min: 3",
+            "tags"  => "required|array|max:5",
+            "tags.*" => "min:3|max:10",
+            "song" => "required|file|mimes:mpga|max:8192",
+        ]);
+
+        if($results->fails()){
+            return response()->json([
+                'errors'    => $results->errors()
+            ], 400);
+        }
+
+        // UPload the song
+        $filePath = $request->song->store("public/songs");
+
+        $song = new Song([
+            "name"  => $request->name,
+            "tags"  => $request->tags
+        ]);
+
+        $song->path = $filePath;
+        $song->time = "3:43";
+        $song->user_id = auth()->user()->id;
+
+        $song->save();
+
+        return response()->json([
+            "song" => $this->songUrl($song)
+        ], 201);
+
     }
 
     /**
@@ -88,5 +123,11 @@ class SongController extends Controller
     public function destroy(Song $song)
     {
         //
+    }
+
+    // Get the song public url
+    protected function songUrl(Song $song){
+        $song->path = Storage::url($song->path);
+        return $song;
     }
 }

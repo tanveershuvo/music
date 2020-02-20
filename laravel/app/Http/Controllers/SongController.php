@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
+
+    public function __construct(){
+        
+        $this->middleware("api:auth")->only(["store", "update", "destroy"]);
+        
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 
-Route::resource("/songs", "SongController", ["only" => ["index", "store", "update", "destroy"]]);
+Route::resource("/songs", "SongController", ["only" => ["index", "show", "store", "update", "destroy"]]);
 Route::get("/search/{query}", "SongController@search");
 
 Route::post("/register", "UserController@register");

@@ -97,7 +97,11 @@ class SongController extends Controller
      */
     public function show(Song $song)
     {
-        //
+        $song = $this->songUrl($song);
+
+        return response()->json([
+            "song"  => $song
+        ]);
     }
 
     /**

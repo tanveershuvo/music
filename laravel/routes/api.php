@@ -15,3 +15,6 @@ use Illuminate\Http\Request;
 
 
 Route::resource("/songs", "SongController", ["only" => ["index", "store", "update", "destroy"]]);
+
+Route::post("/register", "UserController@register");
+Route::post("/me", "UserController@me")->middleware("auth:api");

@@ -138,6 +138,41 @@ class UserController extends Controller
     }
 
 
+    /**
+     * Change authintecated user password after validating the request
+     */
+    public function password(Request $request){
+        
+        $results = Validator::make($request->all(), [
+            'old_password' => 'required|string',
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
 
+        if($results->fails()){
+            return response()->json([
+                "errors" => $results->errors()
+            ], 400);
+        }
+
+        // Validate old password
+        $user = auth()->user();
+
+        if(! Hash::check($request->old_password, $user->password)){
+            return response()->json([
+                "errors" => [
+                    "Wrong Password"
+                ]
+            ], 400);
+        }
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return response()->json([
+            "success" => true
+        ]);
+
+    }
 
 }

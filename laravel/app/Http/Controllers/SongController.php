@@ -10,7 +10,7 @@ class SongController extends Controller
 
     public function __construct(){
         
-        $this->middleware("api:auth")->only(["store", "update", "destroy"]);
+        $this->middleware("auth:api")->only(["store", "update", "destroy"]);
         
     }
 

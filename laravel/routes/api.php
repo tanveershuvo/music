@@ -19,3 +19,4 @@ Route::resource("/songs", "SongController", ["only" => ["index", "store", "updat
 Route::post("/register", "UserController@register");
 Route::post("/me", "UserController@me")->middleware("auth:api");
 Route::get("/user/{slug}", "UserController@songs");
+Route::post("/user/settings", "UserController@settings")->middleware("auth:api");

@@ -47,7 +47,8 @@ class UserController extends Controller
      * Return authenticated user data
      */
     public function me(){
-        return response()->json(auth()->user(), 200);
+        $user = $this->picUrl(auth()->user());
+        return response()->json($user, 200);
     }
 
     /**
@@ -85,5 +86,58 @@ class UserController extends Controller
         $song->path = Storage::url($song->path);
         return $song;
     }
+
+
+    /**
+     * Update user settings
+     */
+    public function settings(Request $request){
+
+        $user = auth()->user();
+        
+        $results = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'pic'   => 'nullable|image|max:2048'
+        ]);
+
+        if($results->fails()){
+            return response()->json([
+                "errors" => $results->errors()
+            ], 400);
+        }
+
+        // Check if the user uploaded new image
+        $filePath = $user->pic;
+        if($request->file("pic")){
+            // Delete old picture
+            Storage::delete($filePath);
+            // UPload the picture
+            $filePath = $request->file("pic")->store("public/pics");
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->pic = $filePath;
+        
+        $user->save();
+
+        $user = $this->picUrl($user);
+
+        return response()->json([
+            "user"  => $user
+        ]);
+
+    }
+
+    public function picUrl($user){
+        if($user->pic){
+            $user->pic = Storage::url($user->pic);
+        }
+        return $user;
+    }
+
+
+
 
 }

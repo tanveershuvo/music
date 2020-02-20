@@ -62,7 +62,7 @@ class SongController extends Controller
             ], 400);
         }
 
-        // UPload the song
+        // Upload the song
         $filePath = $request->song->store("public/songs");
 
         // Get file duration
@@ -116,7 +116,57 @@ class SongController extends Controller
      */
     public function update(Request $request, Song $song)
     {
-        //
+        // Validate the request
+        $results = Validator::make($request->all(), [
+            "name"  => "required|max: 20|min: 3",
+            "tags"  => "required|array|max:5",
+            "tags.*" => "min:3|max:10",
+            "song" => "nullable|file|mimes:mpga|max:8192",
+        ]);
+
+        if($results->fails()){
+            return response()->json([
+                'errors'    => $results->errors()
+            ], 400);
+        }
+
+
+        // Check for authorization
+        if(auth()->user()->id != $song->user_id){
+            return response()->json([
+                'errors'    => [
+                    'unauthorized'
+                ]
+            ], 401);
+        }
+
+
+        // Check if there's a file
+        
+        $filePath = $song->path;
+        $duration = $song->time;
+
+        if($request->file("song")){
+            // Delete old song
+            Storage::delete($filePath);
+            // UPload the song
+            $filePath = $request->file("song")->store("public/songs");
+            // Get file duration
+            $duration = $this->getDuration($filePath);
+        }
+
+
+        $song->name = $request->name;
+        $song->tags = $request->tags;
+        $song->path = $filePath;
+        $song->time = $duration;
+
+        $song->save();
+
+        return response()->json([
+            "song" => $this->songUrl($song)
+        ], 201);
+
     }
 
     /**
@@ -127,7 +177,24 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        // Check for authorization
+        if(auth()->user()->id != $song->user_id){
+            return response()->json([
+                'errors'    => [
+                    'unauthorized'
+                ]
+            ], 401);
+        }
+
+        // Delete song file
+        Storage::delete($song->path);
+
+        // Delete song data
+        $deleted = $song->delete();
+
+        return response()->json([
+            "deleted" => $deleted,
+        ], 200);
     }
 
     // Get the song public url

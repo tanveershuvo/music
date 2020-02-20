@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
+use wapmorgan\Mp3Info\Mp3Info;
+
 class SongController extends Controller
 {
 
@@ -63,13 +65,16 @@ class SongController extends Controller
         // UPload the song
         $filePath = $request->song->store("public/songs");
 
+        // Get file duration
+        $duration = $this->getDuration($filePath);
+
         $song = new Song([
             "name"  => $request->name,
             "tags"  => $request->tags
         ]);
 
         $song->path = $filePath;
-        $song->time = "3:43";
+        $song->time = $duration;
         $song->user_id = auth()->user()->id;
 
         $song->save();
@@ -130,4 +135,15 @@ class SongController extends Controller
         $song->path = Storage::url($song->path);
         return $song;
     }
+
+    /**
+     * Get file path duration
+     */
+    protected function getDuration($filePath){
+        $audio = new Mp3Info(Storage::disk("local")->path($filePath));
+        $duration = floor($audio->duration / 60) . ":" . floor($audio->duration % 60);
+        
+        return $duration;
+    }
+    
 }

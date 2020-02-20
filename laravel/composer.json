@@ -13,7 +13,8 @@
         "fruitcake/laravel-cors": "^1.0",
         "laravel/framework": "^6.2",
         "laravel/passport": "^8.4",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "wapmorgan/mp3info": "^0.0.5"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

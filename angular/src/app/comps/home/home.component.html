@@ -1,0 +1,59 @@
+<section class="hero-section d-flex" style="background-image: url('assets/images/bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-1"></div>
+        <div class="text-container col-10">
+          <h1>Stay Where The <mark>Singing</mark> Is</h1>
+          <h1>Evils Don't <mark>Sing</mark></h1>
+          <form>
+            <input type="text" placeholder="Search"/>
+            <button type="submit"> <i class="fas fa-search"></i></button>
+          </form><a class="explor-btn" href="/explore.html">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="mobile-section">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-1"></div>
+        <div class="col-4 col-mdr-12 img-wrapper"><img class="mobile-img" src="assets/images/mobile.png"/><img class="back-img" src="assets/images/confetti.svg"/></div>
+        <div class="col-6 col-mdr-12">
+          <div class="text-container">
+            <h2>Listen To The Music Anywhere And Any Time.</h2>
+            <p>Our app is available on Web, iOS and Android. You can download it for free and listen to the music from all over the world any time you want wherever you are.</p>
+            <div class="btns"><a href="#"><img src="assets/images/app-store.svg"/></a><a href="#"><img src="assets/images/google-play.svg"/></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upload-section">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-1"></div>
+        <div class="col-6 col-mdr-12 text-container">
+          <h2>Upload Your Music And Share It With The World.</h2>
+          <p>Get on our platform to connect with artists, share your sounds and grow your audience. What are you waiting for?</p>
+          <div><a routerLink="/login">Upload Yours</a></div>
+        </div>
+        <div class="col-4 col-mdr-6"><img src="assets/images/upload.svg"/></div>
+      </div>
+    </div>
+  </div>
+  <div class="create-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mx-auto col-mdr-12">
+          <h2>We Can't Wait For You To Join Our Community.</h2>
+          <div><a class="big-btn" routerLink="/register">Create Account</a></div>
+          <div class="footer"><span>Already have an account? <a routerLink="/login">Login</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Router -->
+  <router-outlet></router-outlet>
+  

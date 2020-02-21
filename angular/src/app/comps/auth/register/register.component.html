@@ -1,0 +1,34 @@
+<div class="modal modal-register">
+  <i
+    routerLink="/"
+    class="fas fa-times"
+    style="color: white; font-size: 32px; position: absolute; top: 40px; right: 50px; z-index: 100; cursor: pointer;"
+  ></i>
+  <div class="form-container">
+    <div class="overlay" routerLink="/"></div>
+    <form style="z-index: 50;">
+      <div class="form-group">
+        <label for="name"><span>Username</span></label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="form-group">
+        <label for="email"><span>Email</span></label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="form-group">
+        <label for="password"> <span>Password</span></label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div class="form-group">
+        <label for="password"> <span>Confirm Password</span></label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div class="form-group">
+        <button type="submit">Register</button>
+      </div>
+      <div class="msg">
+        <span>Already have an account? <a routerLink="/login">Login</a></span>
+      </div>
+    </form>
+  </div>
+</div>

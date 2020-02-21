@@ -1,0 +1,31 @@
+<div class="modal modal-login">
+  <i
+    routerLink="/"
+    class="fas fa-times"
+    style="color: white; font-size: 32px; position: absolute; top: 40px; right: 50px; z-index: 100; cursor: pointer;"
+  ></i>
+  <div class="form-container">
+    <div class="overlay" routerLink="/"></div>
+    <form style="z-index: 50;">
+      <div class="form-group">
+        <label for="email"
+          ><span>Email</span
+          ><small class="error">Invliad email and password</small></label
+        >
+        <input class="invalid" type="email" name="email" id="email" />
+      </div>
+      <div class="form-group">
+        <label for="password"> <span>Password</span></label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+      <div class="msg">
+        <span
+          >Don't have an account? <a routerLink="/register">Register</a></span
+        >
+      </div>
+    </form>
+  </div>
+</div>

@@ -29,6 +29,7 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/assets/css/style.min.css",
               "src/styles.scss"
             ],
             "scripts": []

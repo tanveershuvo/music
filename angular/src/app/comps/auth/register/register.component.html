@@ -6,7 +6,7 @@
   ></i>
   <div class="form-container">
     <div class="overlay" routerLink="/"></div>
-    <form style="z-index: 50;">
+    <form style="z-index: 50;" [formGroup]="registerForm">
       <div class="form-group">
         <label for="name"><span>Username</span></label>
         <input type="text" name="name" id="name" />

@@ -20,6 +20,14 @@ export class SearchComponent implements OnInit {
     // Get the query
     this.query = this._route.snapshot.paramMap.get("query");
 
+    this._route.paramMap.subscribe(params => {
+      this.query = params.get("query");
+      
+      this.songs = [];
+      this.search();
+
+    })
+
     this.search();
   }
 

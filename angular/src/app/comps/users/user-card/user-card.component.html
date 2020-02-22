@@ -1,5 +1,5 @@
 <div class="artist-card">
-    <a href="/user.html">
+    <a [routerLink]="['/user', user.slug]">
         <img [src]="user.pic ? user.pic : 'assets/images/placeholder.png'" [alt]="user.name"/>
     </a>
     <a class="artist-name" [routerLink]="['/user', user.slug]">{{ user.name | titlecase }}</a>

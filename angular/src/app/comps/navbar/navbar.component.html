@@ -3,11 +3,29 @@
       <div class="offset-md-1"></div>
       <div class="navbar-logo"><a routerLink="/"><img src="assets/images/logo.svg"/></a></div>
       <app-search-form></app-search-form>
-      <!-- .menu-icon.ml-auto  img(src="/images/menu.svg")  -->
-      <ul class="navbar-nav">
+      <div class="menu-icon ml-auto" *ngIf="logged" (click)="toggleMenu()">
+        <img src="assets/images/menu.svg" alt="">
+      </div>  
+      <ul class="navbar-nav" *ngIf="!logged">
         <li><a routerLink="/login">Login</a></li>
         <li class="btn"><a routerLink="/register">Join</a></li>
       </ul>
       <div class="offset-md-1"></div>
     </div>
   </nav>
+
+  <aside class="side-menu" style="display:block;" *ngIf="showMenu && logged">
+    <div class="overlay" (click)="toggleMenu()"></div>
+    <div class="list-container">
+      <i class="fas fa-times close-icon" (click)="toggleMenu()"></i>
+      <ul>
+        <li class="active"><a href="#">Profile</a></li>
+        <li><a href="#">Upload</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Change Password</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div>
+  </aside>

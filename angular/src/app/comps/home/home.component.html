@@ -1,3 +1,4 @@
+<div *ngIf="!logged">
 <section class="hero-section d-flex" style="background-image: url('assets/images/bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
@@ -51,7 +52,10 @@
       </div>
     </div>
   </div>
-  
+</div>
+
+  <!-- Users -->
+  <app-users *ngIf="logged"></app-users>
+
   <!-- Router -->
   <router-outlet></router-outlet>
-  

@@ -1,0 +1,23 @@
+<section class="explore-section section">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-1"></div>
+      <div class="col-10 p-0 grid col-mdr-12">
+        <app-user-card
+          *ngFor="let user of users; let i = index"
+          [user]="user"
+        ></app-user-card>
+      </div>
+
+      <div class="col-10 mx-auto col-mdr-12" *ngIf="nextPage || first">
+        <div class="fetching">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

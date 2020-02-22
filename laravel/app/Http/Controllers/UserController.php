@@ -181,6 +181,9 @@ class UserController extends Controller
     public function users(){
         $users = User::paginate(10);
 
+        $users->getCollection()->transform(function($u){
+            return $this->picUrl($u);       
+        });
         return response()->json($users);
     }
 

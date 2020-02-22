@@ -12,6 +12,8 @@ import { NavbarComponent } from './comps/navbar/navbar.component';
 import { FooterComponent } from './comps/footer/footer.component';
 import { SearchFormComponent } from './comps/forms/search-form/search-form.component';
 import { AuthService } from './services/auth.service';
+import { UsersComponent } from './comps/users/users.component';
+import { UserCardComponent } from './comps/users/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AuthService } from './services/auth.service';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    UsersComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
     <div class="info">
       <div class="info-row">
         <span class="song-name">{{ song.name | titlecase }}</span
-        ><span class="song-date">1 year ago</span>
+        ><span class="song-date">{{ song.createdAtHuman }}</span>
       </div>
       <div class="info-row">
         <span class="song-length">{{ song.time }}</span

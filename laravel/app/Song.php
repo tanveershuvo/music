@@ -9,23 +9,32 @@ class Song extends Model
 {
 
     use Searchable;
-
-    protected   $table = "songs",
-                $primaryKey = "id",
-                $fillable = [
-                    "name", "tags"
-                ];
+    protected $appends = ['createdAtHuman'];
     
-    public function getTagsAttribute($tags){
+    protected   $table = "songs",
+        $primaryKey = "id",
+        $fillable = [
+            "name", "tags"
+        ];
+
+    public function getTagsAttribute($tags)
+    {
         return explode(",", $tags);
     }
 
-    public function setTagsAttribute($tags){
+    public function setTagsAttribute($tags)
+    {
         $this->attributes["tags"] = implode(",", $tags);
-    } 
+    }
+
+    public function getCreatedAtHumanAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
 
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo("App\User", "user_id", "id");
     }
 }

@@ -11,6 +11,7 @@ import { RegisterComponent } from './comps/auth/register/register.component';
 import { NavbarComponent } from './comps/navbar/navbar.component';
 import { FooterComponent } from './comps/footer/footer.component';
 import { SearchFormComponent } from './comps/forms/search-form/search-form.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { SearchFormComponent } from './comps/forms/search-form/search-form.compo
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

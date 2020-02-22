@@ -6,20 +6,29 @@
   ></i>
   <div class="form-container">
     <div class="overlay" routerLink="/"></div>
-    <form style="z-index: 50;" [formGroup]="loginForm">
+    <form style="z-index: 50;" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
       <div class="form-group">
-        <label for="email"
-          ><span>Email</span
-          ><small class="error">Invliad email and password</small></label
-        >
-        <input class="invalid" type="email" name="email" id="email" />
+        <label for="email">
+          <span>Email</span>
+          <!-- Errors -->
+          <small class="error" *ngIf="loginForm.get('email').errors?.required && invalid('email')">This field is require</small>
+          <small class="error" *ngIf="loginForm.get('email').errors?.email && invalid('email')">Please enter a valid email</small>
+          <small class="error" 
+            *ngIf="!((loginForm.get('email').errors?.required || loginForm.get('email').errors?.email)  && invalid('email')) && wrongInfo">Wrong email and password</small>
+        </label>
+        <input [class.invalid]="invalid('email') || wrongInfo" type="email" id="email" formControlName="email" />
       </div>
       <div class="form-group">
-        <label for="password"> <span>Password</span></label>
-        <input type="password" name="password" id="password" />
+        <label for="password"> 
+          <span>Password</span>
+            <!-- Errors -->
+            <small class="error" *ngIf="loginForm.get('password').errors?.required && invalid('password')">This field is require</small>
+            <small class="error" *ngIf="loginForm.get('password').errors?.minlength && invalid('password')">Password can't be less than 6 characters</small>
+        </label>
+        <input [class.invalid]="invalid('password') || wrongInfo" type="password" id="password" formControlName="password" />
       </div>
       <div class="form-group">
-        <button type="submit">Login</button>
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
       </div>
       <div class="msg">
         <span

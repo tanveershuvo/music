@@ -1,0 +1,34 @@
+<section class="search-section section">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-1"></div>
+      <div class="col-10 col-mdr-12">
+        <h1>Search for: "{{ query }}"</h1>
+      </div>
+    </div>
+    <div class="row" *ngFor="let song of songs">
+      <div class="offset-md-1"></div>
+      <div class="col-10 p-0 search-song col-mdr-12">
+        <div class="col-2">
+          <a href="#"
+            ><img class="user-img" [src]="song.user.pic ? song.user.pic : 'assets/images/placeholder.png'"/></a
+          ><a class="user-name" href="#">{{ song.user.name | titlecase }}</a>
+        </div>
+        <div class="col-10">
+          <!-- Song Card -->
+          <app-song-card [song]="song"></app-song-card>
+        </div>
+      </div>
+      <div class="offset-md-1"></div>
+    </div>
+    <div class="col-10 mx-auto col-mdr-12">
+      <div class="fetching">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

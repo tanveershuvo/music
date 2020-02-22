@@ -1,0 +1,24 @@
+<div class="song-card">
+  <!-- body.playing -->
+  <div class="body">
+    <div class="play-icon">
+      <i class="fas fa-play"></i>
+      <!-- <i class="fas fa-pause"></i> -->
+    </div>
+    <div class="info">
+      <div class="info-row">
+        <span class="song-name">{{ song.name | titlecase }}</span
+        ><span class="song-date">1 year ago</span>
+      </div>
+      <div class="info-row">
+        <span class="song-length">{{ song.time }}</span
+        ><span class="song-plays"> <i class="fas fa-play"></i> 20.1k</span>
+      </div>
+    </div>
+  </div>
+  <ul class="tags">
+    <li *ngFor="let tag of song.tags">
+      <a hef="#">{{ tag }}</a>
+    </li>
+  </ul>
+</div>

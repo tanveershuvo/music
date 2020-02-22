@@ -11,6 +11,7 @@ use wapmorgan\Mp3Info\Mp3Info;
 
 class SongController extends Controller
 {
+    protected $userIDs = [];   // For store uesrs id that has been converted
 
     public function __construct(){
         
@@ -207,12 +208,14 @@ class SongController extends Controller
 
     // Get the song public url
     protected function songUrl(Song $song){
+        
         $song->path = Storage::url($song->path);
 
-        if($song->user){
+        if( !in_array($song->user->id, $this->userIDs)){
             $song->user->pic = Storage::url($song->user->pic);
-        }
-
+            
+            $this->userIDs[] = $song->user->id;
+        } 
         return $song;
     }
 

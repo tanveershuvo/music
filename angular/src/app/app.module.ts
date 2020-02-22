@@ -14,6 +14,8 @@ import { SearchFormComponent } from './comps/forms/search-form/search-form.compo
 import { AuthService } from './services/auth.service';
 import { UsersComponent } from './comps/users/users.component';
 import { UserCardComponent } from './comps/users/user-card/user-card.component';
+import { SearchComponent } from './comps/search/search.component';
+import { SongCardComponent } from './song-card/song-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { UserCardComponent } from './comps/users/user-card/user-card.component';
     FooterComponent,
     SearchFormComponent,
     UsersComponent,
-    UserCardComponent
+    UserCardComponent,
+    SearchComponent,
+    SongCardComponent
   ],
   imports: [
     BrowserModule,

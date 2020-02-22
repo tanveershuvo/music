@@ -1,0 +1,20 @@
+<section class="user-section section">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-1"></div>
+        <div class="col-3 artist-card-wrapper col-mdr-12">
+          <app-user-card *ngIf="user" [user]="user"></app-user-card>
+        </div>
+        <div class="col-7 col-mdr-12">
+            <app-song-card *ngFor="let song of songs" [song]="song"></app-song-card>
+          <div class="fetching">
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

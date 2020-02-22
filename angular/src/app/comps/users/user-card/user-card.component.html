@@ -2,7 +2,7 @@
     <a href="/user.html">
         <img [src]="user.pic ? user.pic : 'assets/images/placeholder.png'" [alt]="user.name"/>
     </a>
-    <a class="artist-name" href="/user.html">{{ user.name | titlecase }}</a>
+    <a class="artist-name" [routerLink]="['/user', user.slug]">{{ user.name | titlecase }}</a>
     <div class="artist-info">
       <div class="songs">32 Songs</div>
       <div class="plays"><i class="fas fa-play"></i> 50.7k</div>

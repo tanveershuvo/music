@@ -16,6 +16,7 @@ import { UsersComponent } from './comps/users/users.component';
 import { UserCardComponent } from './comps/users/user-card/user-card.component';
 import { SearchComponent } from './comps/search/search.component';
 import { SongCardComponent } from './song-card/song-card.component';
+import { ProfileComponent } from './comps/users/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SongCardComponent } from './song-card/song-card.component';
     UsersComponent,
     UserCardComponent,
     SearchComponent,
-    SongCardComponent
+    SongCardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

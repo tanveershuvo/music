@@ -12,7 +12,7 @@
         <div class="col-2">
           <a href="#"
             ><img class="user-img" [src]="song.user.pic ? song.user.pic : 'assets/images/placeholder.png'"/></a
-          ><a class="user-name" href="#">{{ song.user.name | titlecase }}</a>
+          ><a class="user-name" [routerLink]="['/user', song.user.slug]">{{ song.user.name | titlecase }}</a>
         </div>
         <div class="col-10">
           <!-- Song Card -->

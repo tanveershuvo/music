@@ -22,3 +22,5 @@ Route::post("/me", "UserController@me")->middleware("auth:api");
 Route::get("/user/{slug}", "UserController@songs");
 Route::post("/user/settings", "UserController@settings")->middleware("auth:api");
 Route::post("/user/password", "UserController@password")->middleware("auth:api");
+
+Route::get("/users", "UserController@users");                  

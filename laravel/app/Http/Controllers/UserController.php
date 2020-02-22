@@ -175,4 +175,13 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Return all users
+     */
+    public function users(){
+        $users = User::paginate(10);
+
+        return response()->json($users);
+    }
+
 }

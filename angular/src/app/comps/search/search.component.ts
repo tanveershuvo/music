@@ -47,7 +47,6 @@ export class SearchComponent implements OnInit {
         (error) => {},
         () => {
           this.loading = false;
-          console.log(this.songs)
         }
       );
   }

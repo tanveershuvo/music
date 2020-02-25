@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
   songs: any[] = [];
 
   loading: boolean = false;
-  nextPage: string = null;
+  nextPage: string | boolean = true;
 
   constructor(private _http: HttpClient, private _route: ActivatedRoute) {}
 
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
 
     this._route.paramMap.subscribe(params => {
       this.query = params.get("query");
-      
+      this.nextPage = "http://music.test/api/search/" + this.query;
       this.songs = [];
       this.search();
 
@@ -33,15 +33,18 @@ export class SearchComponent implements OnInit {
 
   search() {
 
+    if(this.loading || this.nextPage == null) return;
     this.loading = true;
     // Search
+
     this._http
-      .get("http://music.test/api/search/" + this.query, {
+      .get(this.nextPage, {
         headers: new HttpHeaders().set("Accept", "application/json")
       })
       .subscribe(
         (data: any) => {
-          this.nextPage = data.last_page_url;
+
+          this.nextPage = data.next_page_url;
 
           let newSongs = data.data.map((s)=>{
             s.path = "http://music.test" + s.path;

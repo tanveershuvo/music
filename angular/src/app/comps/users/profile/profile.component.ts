@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
 
     this._route.paramMap.subscribe(params => {
       this.query = params.get("query");
-
+      this.nextPage = "http://music.test/api/user/" + this.query;
       this.songs = [];
       this.search();
     });
@@ -33,16 +33,20 @@ export class ProfileComponent implements OnInit {
   }
 
   search() {
+
+    if(this.loading || this.nextPage == null) return;
+
     this.loading = true;
     // Search
     this._http
-      .get("http://music.test/api/user/" + this.query, {
+      .get(this.nextPage, {
         headers: new HttpHeaders().set("Accept", "application/json")
       })
       .subscribe(
         (res: any) => {
-          this.nextPage = res.last_page_url;
+          this.nextPage = res.data.next_page_url;
           
+          console.log(res.user);
           this.user = res.user;
           this.user.pic = this.user.pi ? "http://music.test" + this.user.pic : null;
 

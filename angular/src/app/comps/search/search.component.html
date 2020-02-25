@@ -22,7 +22,7 @@
       <div class="offset-md-1"></div>
     </div>
     <div class="col-10 mx-auto col-mdr-12">
-      <app-fetching (bottom)="search()"></app-fetching>
+      <app-fetching (bottom)="search()"  *ngIf="nextPage"></app-fetching>
     </div>
   </div>
 </section>

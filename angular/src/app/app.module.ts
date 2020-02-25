@@ -17,6 +17,8 @@ import { UserCardComponent } from './comps/users/user-card/user-card.component';
 import { SearchComponent } from './comps/search/search.component';
 import { SongCardComponent } from './song-card/song-card.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
+import { BottomDirective } from './directives/bottom.directive';
+import { FetchingComponent } from './comps/fetching/fetching.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ProfileComponent } from './comps/users/profile/profile.component';
     UserCardComponent,
     SearchComponent,
     SongCardComponent,
-    ProfileComponent
+    ProfileComponent,
+    BottomDirective,
+    FetchingComponent
   ],
   imports: [
     BrowserModule,

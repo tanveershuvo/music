@@ -10,13 +10,7 @@
       </div>
 
       <div class="col-10 mx-auto col-mdr-12" *ngIf="nextPage || first">
-        <div class="fetching">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
+          <app-fetching (bottom)="getUsers()" ></app-fetching>
       </div>
     </div>
   </div>

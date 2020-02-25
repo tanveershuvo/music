@@ -7,13 +7,7 @@
         </div>
         <div class="col-7 col-mdr-12">
             <app-song-card *ngFor="let song of songs" [song]="song"></app-song-card>
-          <div class="fetching">
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
+            <app-fetching (bottom)="search()" ></app-fetching>
         </div>
       </div>
     </div>

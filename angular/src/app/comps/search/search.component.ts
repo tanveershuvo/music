@@ -33,7 +33,6 @@ export class SearchComponent implements OnInit {
 
   search() {
 
-
     this.loading = true;
     // Search
     this._http

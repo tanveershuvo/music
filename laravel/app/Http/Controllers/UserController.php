@@ -59,6 +59,8 @@ class UserController extends Controller
         try{
             $user = User::findBySlugOrFail($slug);
 
+            $user = $this->picUrl($user);
+
             $songs = $user->songs()->paginate(10);
 
             $songs->getCollection()->transform(function ($s) {

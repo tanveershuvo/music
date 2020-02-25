@@ -38,6 +38,7 @@ export class ProfileComponent implements OnInit {
 
     this.loading = true;
     // Search
+    console.log(this.nextPage);
     this._http
       .get(this.nextPage, {
         headers: new HttpHeaders().set("Accept", "application/json")
@@ -46,9 +47,8 @@ export class ProfileComponent implements OnInit {
         (res: any) => {
           this.nextPage = res.data.next_page_url;
           
-          console.log(res.user);
           this.user = res.user;
-          this.user.pic = this.user.pi ? "http://music.test" + this.user.pic : null;
+          this.user.pic = this.user.pic ? "http://music.test" + this.user.pic : null;
 
           let newSongs = res.data.data.map(s => {
             s.path = "http://music.test" + s.path;

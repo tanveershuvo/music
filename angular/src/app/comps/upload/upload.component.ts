@@ -126,9 +126,10 @@ export class UploadComponent implements OnInit {
             this.width = (event.loaded / event.total) * 100;
             console.log(this.width + "%");
             return;
+          } else if (event.type == HttpEventType.Response) {
+            // Redirect the user to the profile page
+            this._auth.redirectProfile();
           }
-
-          // console.log(event);
         },
         error => {
           console.log(error);

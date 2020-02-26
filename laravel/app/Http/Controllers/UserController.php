@@ -61,7 +61,7 @@ class UserController extends Controller
 
             $user = $this->picUrl($user);
 
-            $songs = $user->songs()->paginate(10);
+            $songs = $user->songs()->orderBy('created_at', 'DESC')->paginate(10);
 
             $songs->getCollection()->transform(function ($s) {
                 return $this->songUrl($s);

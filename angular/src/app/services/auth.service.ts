@@ -116,6 +116,12 @@ export class AuthService {
   redirectHome(){
     this._router.navigate(['/']);
   }
+  /**
+   * Redirect the user to profile page
+   */
+  redirectProfile(){
+    this._router.navigate(['/user', this.user.slug]);
+  }
 
   isLogged(){
     return this.logged;

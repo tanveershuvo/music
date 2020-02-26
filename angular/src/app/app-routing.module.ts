@@ -5,7 +5,7 @@ import { LoginComponent } from './comps/auth/login/login.component';
 import { RegisterComponent } from './comps/auth/register/register.component';
 import { SearchComponent } from './comps/search/search.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
-import { UploadComponent } from './upload/upload.component';
+import { UploadComponent } from './comps/upload/upload.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 

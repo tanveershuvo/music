@@ -38,7 +38,7 @@ export class SearchComponent implements OnInit {
     // Search
 
     this._http
-      .get(this.nextPage, {
+      .get(<string>this.nextPage, {
         headers: new HttpHeaders().set("Accept", "application/json")
       })
       .subscribe(

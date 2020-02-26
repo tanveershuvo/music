@@ -1,0 +1,87 @@
+<section class="password-section section">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-1"></div>
+      <div class="col-10 col-mdr-12">
+        <form
+          class="w-100 upload"
+          [formGroup]="uploadForm"
+          (ngSubmit)="upload()"
+        >
+          <div class="row">
+            <!-- <div class="col-1 flex-end number">
+                <div class="form-group m-0">1.</div>
+              </div> -->
+            <div class="form-group m-0 col-6">
+              <label for="name">
+                <span>File Name</span>
+              </label>
+              <input type="text" id="name" autocomplete="off" disabled #fileNameInput/>
+            </div>
+            <div class="form-group m-0 col-6">
+              <label for="name"> <span>Song Name</span></label>
+              <input
+                type="text"
+                id="name"
+                autocomplete="off"
+                formControlName="name"
+              />
+            </div>
+            <!-- <div class="col-1 flex-end p-0">
+                <div class="form-group m-0 btn-container"></div>
+                <button class="delete-btn"><i class="fas fa-times"></i></button>
+              </div> -->
+          </div>
+          <!-- ================ Tags ================ -->
+          <div class="row">
+            <div class="form-group m-0 col-12">
+              <label for="tags">
+                <span>Tags</span>
+              </label>
+              <textarea id="tags" cols="30" rows="2"></textarea>
+              <div formArrayName="tags">
+                
+                <div class="song-card" style="margin-top: 20px;">
+                  <ul class="tags">
+                    <li
+                      *ngFor="
+                        let c of uploadForm.get('tags').value;
+                        let i = index
+                      "
+                    >
+                      <a>{{ c }}</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-group col-12">
+            <div class="upload-box w-100" #box>
+              <small class="error">{{ fileError }}</small>
+              <div class="box invalid">
+                <i class="fas fa-cloud-upload-alt icon"></i>
+                <div class="text">
+                  <h2 class="header">Upload Your Songs</h2>
+                  <h3 class="sub-header">Drag & Drop</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group col-12">
+            <div class="progress">
+              <div class="bar" [style.width]="width + '%'"></div>
+            </div>
+          </div>
+          <div class="form-group col-10 col-mdr-12">
+            <button type="submit" [disabled]="uploadForm.invalid || loading || !file">
+              Upload
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

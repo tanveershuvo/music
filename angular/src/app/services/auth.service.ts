@@ -121,4 +121,8 @@ export class AuthService {
     return this.logged;
   }
 
+  getToken(){
+    return this.access_token;
+  }
+
 }

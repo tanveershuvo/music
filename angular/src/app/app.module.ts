@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +19,7 @@ import { SongCardComponent } from './song-card/song-card.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
 import { BottomDirective } from './directives/bottom.directive';
 import { FetchingComponent } from './comps/fetching/fetching.component';
-import { UploadComponent } from './upload/upload.component';
+import { UploadComponent } from './comps/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { UploadComponent } from './upload/upload.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     AuthService

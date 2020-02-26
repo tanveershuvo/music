@@ -1,0 +1,8 @@
+.bar{
+    transition: width .1s 0s linear;
+}
+
+input:disabled{
+    opacity: .5;
+    cursor: not-allowed;
+}

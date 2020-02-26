@@ -18,7 +18,24 @@ export class AuthService {
   userEmitter: EventEmitter<any> = new EventEmitter<any>();
   statusEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _http: HttpClient, private _router: Router) { }
+  constructor(private _http: HttpClient, private _router: Router) {
+    let expires_in = parseInt(localStorage.getItem("expires_in"));
+    let access_token = localStorage.getItem("access_token");
+    let refresh_token = localStorage.getItem("refresh_token");
+    if(expires_in < Date.now()){
+      this.logged = true;
+      
+      // get user
+      let user = JSON.parse(localStorage.getItem("user"));
+
+      this.expires_in = expires_in;
+      this.access_token = access_token;
+      this.refresh_token = refresh_token;
+
+      this.storeData(expires_in, access_token, refresh_token);
+    }
+    
+   }
 
   /**
    * Return post request to log the user in
@@ -99,4 +116,9 @@ export class AuthService {
   redirectHome(){
     this._router.navigate(['/']);
   }
+
+  isLogged(){
+    return this.logged;
+  }
+
 }

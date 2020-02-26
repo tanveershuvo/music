@@ -19,6 +19,7 @@ import { SongCardComponent } from './song-card/song-card.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
 import { BottomDirective } from './directives/bottom.directive';
 import { FetchingComponent } from './comps/fetching/fetching.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FetchingComponent } from './comps/fetching/fetching.component';
     SongCardComponent,
     ProfileComponent,
     BottomDirective,
-    FetchingComponent
+    FetchingComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

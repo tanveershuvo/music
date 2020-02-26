@@ -5,6 +5,8 @@ import { LoginComponent } from './comps/auth/login/login.component';
 import { RegisterComponent } from './comps/auth/register/register.component';
 import { SearchComponent } from './comps/search/search.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
+import { UploadComponent } from './upload/upload.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
@@ -14,6 +16,7 @@ const routes: Routes = [
   ]},
   {path: "search/:query", component: SearchComponent},
   {path: "user/:query", component: ProfileComponent},
+  {path: "upload", component: UploadComponent, canActivate: [AuthGuardGuard]},
 ];
 
 @NgModule({

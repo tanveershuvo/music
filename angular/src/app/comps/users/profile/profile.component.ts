@@ -37,8 +37,8 @@ export class ProfileComponent implements OnInit {
     if(this.loading || this.nextPage == null) return;
 
     this.loading = true;
+    
     // Search
-    console.log(this.nextPage);
     this._http
       .get(this.nextPage, {
         headers: new HttpHeaders().set("Accept", "application/json")

@@ -131,4 +131,8 @@ export class AuthService {
     return this.access_token;
   }
 
+  getUser(){
+    return this.user;
+  }
+
 }

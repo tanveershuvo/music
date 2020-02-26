@@ -1,0 +1,44 @@
+<section class="settings-section section">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-1"></div>
+      <div class="col-5 col-mdr-12">
+        <form class="w-100" [formGroup]="updateForm" (ngSubmit)="update()" *ngIf="user">
+          <div class="form-group">
+            <label for="email">
+              <span>Email</span>
+              <small class="error" *ngIf="error('email', 'email')">Invalid email</small>
+              <small class="error" *ngIf="error('email', 'required')">This field is required</small>
+            </label>
+            <input type="email" id="email"  formControlName="email" [class.invalid]="hasError('email')"/>
+          </div>
+          <div class="form-group">
+            <label for="name"> 
+                <span>Username</span>
+                <small class="error" *ngIf="error('name', 'required')">This field is required</small>
+                <small class="error" *ngIf="error('name', 'minlength')">Too short name</small>
+                <small class="error" *ngIf="error('name', 'maxlength')">Too long name</small>
+            </label>
+            <input type="text" id="name" formControlName="name" [class.invalid]="hasError('name')"/>
+          </div>
+          <div class="form-group">
+            <div class="progress">
+              <div class="bar" [style.width]="width + '%'"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" [disabled]="updateForm.invalid">Save</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-3 col-mdr-12">
+        <div class="upload-img-container" #file>
+          <div class="msg">
+            <h2>Upload New Photo</h2>
+          </div>
+          <img #img/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -20,6 +20,7 @@ import { ProfileComponent } from './comps/users/profile/profile.component';
 import { BottomDirective } from './directives/bottom.directive';
 import { FetchingComponent } from './comps/fetching/fetching.component';
 import { UploadComponent } from './comps/upload/upload.component';
+import { SettingsComponent } from './comps/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UploadComponent } from './comps/upload/upload.component';
     ProfileComponent,
     BottomDirective,
     FetchingComponent,
-    UploadComponent
+    UploadComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

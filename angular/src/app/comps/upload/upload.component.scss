@@ -6,3 +6,13 @@ input:disabled{
     opacity: .5;
     cursor: not-allowed;
 }
+
+i{
+    display: inline-block;
+    padding: 0px 10px;
+    cursor: pointer;
+    opacity: .6;
+    &:hover{
+        opacity: 1;
+    }
+}

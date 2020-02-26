@@ -37,8 +37,9 @@
             <div class="form-group m-0 col-12">
               <label for="tags">
                 <span>Tags</span>
+                <small class="error">{{ tagsError }}</small>
               </label>
-              <textarea id="tags" cols="30" rows="2"></textarea>
+              <textarea id="tags" cols="30" rows="2" #tagsBox></textarea>
               <div formArrayName="tags">
                 
                 <div class="song-card" style="margin-top: 20px;">
@@ -50,6 +51,7 @@
                       "
                     >
                       <a>{{ c }}</a>
+                      <i class="fas fa-times" (click)="removeTag(i)"></i>
                     </li>
                   </ul>
                 </div>

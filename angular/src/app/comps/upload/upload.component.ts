@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders, HttpEventType } from "@angular/common/http";
 export class UploadComponent implements OnInit {
   uploadForm: FormGroup;
 
-  fileErro: string = "";
+  fileError: string = "";
   @ViewChild("fileNameInput", {static: true}) fileNameInput: ElementRef;
 
   loading: boolean = false;
@@ -113,8 +113,24 @@ export class UploadComponent implements OnInit {
       );
   }
 
+  /**
+   * Storing the file in "virable" after validating it
+   * @param file 
+   */
   storeFile(file: File){
+
+    if(file.size > 1024 * 1024 * 8){ // File greater than 8MB
+      this.fileError = "The song can't be larger than 8MB";
+      return;
+    } else if ( file.type != "audio/mpeg") { // Not a song file
+      this.fileError = 'The file must be of type "audio/mpeg"';
+      return;
+    }
+    
+    // Store file info and clear file errors
     this.file = file;
     this.fileNameInput.nativeElement.value = this.file.name;
+    this.fileError = "";
+
   }
 }

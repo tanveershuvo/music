@@ -29,4 +29,8 @@ export class NavbarComponent implements OnInit {
     this.showMenu = !this.showMenu;
   }
 
+  logout(){
+    this._auth.logout();
+  }
+
 }

@@ -137,4 +137,19 @@ export class AuthService {
     return this.user;
   }
 
+  logout(){
+    this.logged = null;
+    this.token = null;
+    this.expires_in =  null;
+    this.access_token =  null;
+    this.refresh_token =  null;
+
+    localStorage.clear();
+
+    this.userEmitter.emit(null);
+    this.statusEmitter.emit(null);
+
+    this.redirectHome();
+  }
+
 }

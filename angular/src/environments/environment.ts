@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: "http://music.test/", // Backend base url
+  client_id: 2,     // Backend client ID
+  client_secret: "pSNVxpfyj4A5bma1bcFXVquZNnpqKkR9m2GiVoRn",  // Backend client secret
+
 };
 
 /*

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpHeaders, HttpClient, HttpEventType } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-settings',
@@ -84,7 +85,7 @@ export class SettingsComponent implements OnInit {
 
     let headers = new HttpHeaders().set("Accept", "application/json").set("Authorization", "Bearer " + token);
     
-    this._http.post("http://music.test/api/user/settings", fd, {
+    this._http.post( environment.url + "api/user/settings", fd, {
       headers: headers,
       observe: "events",
       reportProgress: true

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "app-search",
@@ -22,7 +23,7 @@ export class SearchComponent implements OnInit {
 
     this._route.paramMap.subscribe(params => {
       this.query = params.get("query");
-      this.nextPage = "http://music.test/api/search/" + this.query;
+      this.nextPage = environment.url + "api/search/" + this.query;
       this.songs = [];
       this.search();
 
@@ -47,8 +48,8 @@ export class SearchComponent implements OnInit {
           this.nextPage = data.next_page_url;
 
           let newSongs = data.data.map((s)=>{
-            s.path = "http://music.test" + s.path;
-            s.user.pic = s.user.pic ? "http://music.test" + s.user.pic : null;
+            s.path = environment.url + s.path;
+            s.user.pic = s.user.pic ? environment.url + s.user.pic : null;
 
             return s;
           });

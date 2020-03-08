@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { HttpClient, HttpHeaders, HttpEventType } from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "app-upload",
@@ -114,7 +115,7 @@ export class UploadComponent implements OnInit {
     // Upload file
     this.loading = true;
     this._http
-      .post("http://music.test/api/songs", fd, {
+      .post( environment.url + "api/songs", fd, {
         headers: headers,
         reportProgress: true,
         observe: "events"

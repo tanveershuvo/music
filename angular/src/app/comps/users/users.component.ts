@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "app-users",
@@ -22,7 +23,7 @@ export class UsersComponent implements OnInit {
 
     if (this.nextPage == null && !this.first) return;
     
-    let url = this.nextPage ? this.nextPage : "http://music.test/api/users";
+    let url = this.nextPage ? this.nextPage : environment.url + "api/users";
     
     let headers = new HttpHeaders().set("Accept", "application/json");
 
@@ -31,7 +32,7 @@ export class UsersComponent implements OnInit {
     this._http.get(url).subscribe(
       (data: any) => {
         let newUsers = data.data.map(u => {
-          u.pic = u.pic ? "http://music.test" + u.pic : null;
+          u.pic = u.pic ? environment.url + u.pic : null;
           return u;
         });
         this.users.push(...newUsers);

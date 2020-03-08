@@ -1,6 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +50,8 @@ export class AuthService {
 
     return this._http.post(this.baseURL("oauth/token"), {
       grant_type: "password",
-      client_id: "2",
-      client_secret: "pSNVxpfyj4A5bma1bcFXVquZNnpqKkR9m2GiVoRn",
+      client_id: environment.client_id,
+      client_secret: environment.client_secret,
       username: email,
       password: password
     }, {
@@ -107,7 +109,7 @@ export class AuthService {
    * @param url string
    */
   baseURL(url: string = ""){
-    return "http://music.test/" + url;
+    return environment.url + url;
   }
 
   /**

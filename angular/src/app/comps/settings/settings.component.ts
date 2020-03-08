@@ -95,7 +95,7 @@ export class SettingsComponent implements OnInit {
         if(event.type == HttpEventType.UploadProgress){
           this.width = (event.loaded / event.total) * 100;
         } else if (event.type == HttpEventType.Response) {
-          // Done
+          this._auth.redirectProfile();
         }
       },
       (err)=> {console.log(err)},

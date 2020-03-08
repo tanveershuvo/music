@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-card',
@@ -9,9 +10,15 @@ export class UserCardComponent implements OnInit {
 
   @Input("user") user: any;
 
-  constructor() { }
+  loggedUser: any = null;
+
+  constructor(private _auth: AuthService) { }
 
   ngOnInit() {
+    this.loggedUser = this._auth.getUser();
+    this._auth.userEmitter.subscribe((user)=>{
+      this.loggedUser = user;
+    });
   }
 
 }

@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit {
   loading: boolean = false;
   nextPage: string | boolean = true;
 
+  noResutls: boolean = false;
+
   constructor(private _http: HttpClient, private _route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class SearchComponent implements OnInit {
       this.query = params.get("query");
       this.nextPage = environment.url + "api/search/" + this.query;
       this.songs = [];
+      this.noResutls = false;
       this.search();
 
     })
@@ -54,6 +57,10 @@ export class SearchComponent implements OnInit {
             return s;
           });
           this.songs.push(...newSongs);
+          console.log("Length:", this.songs.length);
+          if(this.songs.length == 0){
+            this.noResutls = true;
+          }
         },
         (error) => {},
         () => {

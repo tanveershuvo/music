@@ -21,6 +21,7 @@ import { BottomDirective } from './directives/bottom.directive';
 import { FetchingComponent } from './comps/fetching/fetching.component';
 import { UploadComponent } from './comps/upload/upload.component';
 import { SettingsComponent } from './comps/settings/settings.component';
+import { ChangePasswordComponent } from './comps/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SettingsComponent } from './comps/settings/settings.component';
     BottomDirective,
     FetchingComponent,
     UploadComponent,
-    SettingsComponent
+    SettingsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

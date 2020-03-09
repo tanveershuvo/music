@@ -8,6 +8,7 @@ import { ProfileComponent } from './comps/users/profile/profile.component';
 import { UploadComponent } from './comps/upload/upload.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { SettingsComponent } from './comps/settings/settings.component';
+import { ChangePasswordComponent } from './comps/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: "user/:query", component: ProfileComponent},
   {path: "upload", component: UploadComponent, canActivate: [AuthGuardGuard]},
   {path: "settings", component: SettingsComponent, canActivate: [AuthGuardGuard]},
+  {path: "change-password", component: ChangePasswordComponent, canActivate: [AuthGuardGuard]},
 ];
 
 @NgModule({

@@ -1,1 +1,38 @@
-<p>music-player works!</p>
+<!-- ================ Video ================ -->
+<video #video>
+</video>
+<!-- ================ /Video ================ -->
+<div class="player" *ngIf="song">
+
+    
+    <div class="close-icon" (click)="close()"><i class="fas fa-times"></i></div>
+    <div class="player-container">
+      <section class="user d-flex"><img [src]="song.user.pic"/>
+        <div class="user-info"><a class="username" href="#">John Doe</a><span>Song name</span></div>
+      </section>
+      <section class="controls d-flex">
+        <span class="play" (click)="toggle()">
+          <i class="fas fa-play" *ngIf="!isPlaying"></i> 
+          <i class="fas fa-pause" *ngIf="isPlaying"></i>
+        </span>
+        <span class="repeat active"><i class="fas fa-retweet"></i></span><span class="number">{{ song.time }}</span>
+        <div class="slider">
+          <div class="full">
+            <div class="finished" [style.width]="barWidth">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div><span class="number">{{ currentTime }}</span>
+      </section>
+      <section class="sound d-flex">
+        <div class="icon"><i class="fas fa-volume-up"></i><!-- <i class="fas fa-volume-mute"></i> --></div>
+        <div class="slider">
+          <div class="full">
+            <div class="finished">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>

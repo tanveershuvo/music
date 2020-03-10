@@ -23,6 +23,7 @@ import { UploadComponent } from './comps/upload/upload.component';
 import { SettingsComponent } from './comps/settings/settings.component';
 import { ChangePasswordComponent } from './comps/change-password/change-password.component';
 import { MusicPlayerComponent } from './comps/music-player/music-player.component';
+import { MusicPlayerService } from './services/music-player.service';
 
 @NgModule({
   declarations: [
@@ -50,10 +51,11 @@ import { MusicPlayerComponent } from './comps/music-player/music-player.componen
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
-    AuthService
+    AuthService,
+    MusicPlayerService
   ],
   bootstrap: [AppComponent]
 })

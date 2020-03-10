@@ -22,6 +22,7 @@ import { FetchingComponent } from './comps/fetching/fetching.component';
 import { UploadComponent } from './comps/upload/upload.component';
 import { SettingsComponent } from './comps/settings/settings.component';
 import { ChangePasswordComponent } from './comps/change-password/change-password.component';
+import { MusicPlayerComponent } from './comps/music-player/music-player.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ChangePasswordComponent } from './comps/change-password/change-password
     FetchingComponent,
     UploadComponent,
     SettingsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    MusicPlayerComponent
   ],
   imports: [
     BrowserModule,

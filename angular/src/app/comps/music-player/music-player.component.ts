@@ -15,6 +15,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   isPlaying: boolean = false;
   currentTime: string = "0:00";
   barWidth: string = "0%";  // Player progress bar width
+  volumeWidth: number = "50%";  // Volume progress bar width
 
 
   constructor(private _player: MusicPlayerService) { }
@@ -28,6 +29,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       this.isPlaying = false;
       this.currentTime = "0:00";
       this.barWidth = "0%";
+      this.volumeWidth = this.video.nativeElement.volume * 100;
       
       this.play();
       console.log(this.song);
@@ -61,24 +63,38 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
         this.pause();
       }
     });
+
+    // Volume bar position
+    video.addEventListener("volumechange",()=>{
+        let volume = video.volume;
+
+        // Get width percentage
+        this.volumeWidth = volume * 100;
+    })
+
+
   }
 
+  // Close the song & hide song player
   close(){
     this.song = null;
     this.video.nativeElement.src = "";
   }
 
+  // Play the song
   play(){
     this.video.nativeElement.play();
     this.isPlaying = true;
     console.log(this.video.nativeElement);
   }
 
+  // Pause the song
   pause(){
     this.video.nativeElement.pause();
     this.isPlaying = false;
   }
 
+  // Play & pause the song
   toggle(){
     if(this.isPlaying){
       this.pause();
@@ -87,29 +103,22 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     }
   }
   
-  barClicked(e: any){
-    
-    let bar = document.getElementById("bar");
-    let offset = e.clientX - bar.offsetLeft;
-
-    if(offset < 0) return;
-    
-    // Calculate the seeking time 
-    let percentage = ((offset * 100) / bar.clientWidth);
-    let currentTime = (percentage * this.video.nativeElement.duration) / 100;
-    
-    
-  }
   
-  
+  // Change song current time
   songBar(percentage: any){
-    
-    let time = percentage * this.video.nativeElement.duration;
+
+    // Get the current time depends on the percentage
+    let time = percentage * this.video.nativeElement.duration;  
     this.video.nativeElement.currentTime = time;
 
   }
 
 
+  // Change song volume
+  soundBar(percentage: any){
+    let soundVolume = percentage * 1; // sound volume
+    this.video.nativeElement.volume = soundVolume;    
+  }
 
 
 }

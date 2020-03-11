@@ -25,10 +25,15 @@
         </div><span class="number">{{ currentTime }}</span>
       </section>
       <section class="sound d-flex">
-        <div class="icon"><i class="fas fa-volume-up"></i><!-- <i class="fas fa-volume-mute"></i> --></div>
-        <div class="slider">
+        <div class="icon">
+          <!-- Volume icon -->
+          <i class="fas fa-volume-up" *ngIf="volumeWidth >= 50"></i>
+          <i class="fas fa-volume-down" *ngIf="volumeWidth < 50 && volumeWidth > 0"></i>
+          <i class="fas fa-volume-mute" *ngIf="volumeWidth == 0"></i>
+        </div>
+        <div class="slider" (appBar)="soundBar($event)">
           <div class="full">
-            <div class="finished">
+            <div class="finished" [style.width]="volumeWidth + '%'">
               <div class="circle"></div>
             </div>
           </div>

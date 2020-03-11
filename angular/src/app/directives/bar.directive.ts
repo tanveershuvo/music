@@ -19,7 +19,10 @@ export class BarDirective {
 
     let percentage =  offset / width;
 
-    this.emitter.emit(percentage);
+    // Make sure the percenate is not negative
+    if(percentage >= 0){
+      this.emitter.emit(percentage);
+    }
     
   }
 

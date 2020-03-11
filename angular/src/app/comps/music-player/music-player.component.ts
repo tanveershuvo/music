@@ -47,7 +47,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       // Chagne progress width
       this.barWidth = ((video.currentTime / video.duration) * 100) + "%"; 
 
-      console.log(video.currentTime);
+      // console.log(video.currentTime);
     });
   }
 

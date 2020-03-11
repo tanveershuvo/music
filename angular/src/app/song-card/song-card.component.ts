@@ -9,6 +9,7 @@ import { MusicPlayerService } from '../services/music-player.service';
 export class SongCardComponent implements OnInit {
 
   @Input("song") song;
+  @Input("user") user: any;
 
   constructor(private _player: MusicPlayerService) { }
 
@@ -16,6 +17,9 @@ export class SongCardComponent implements OnInit {
   }
 
   playSong(){
+    if(this.user){
+      this.song.user = this.user;
+    }
     this._player.emitSong(this.song);
   }
 

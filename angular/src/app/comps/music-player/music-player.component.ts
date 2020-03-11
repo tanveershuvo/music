@@ -23,6 +23,12 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     this._player.songObserve.subscribe((song)=>{
       this.song = song;
       this.video.nativeElement.src = this.song.path;
+
+      // Default values
+      this.isPlaying = false;
+      this.currentTime = "0:00";
+      this.barWidth = "0%";
+      
       this.play();
       console.log(this.song);
     });

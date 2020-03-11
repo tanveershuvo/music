@@ -54,6 +54,12 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       this.barWidth = ((video.currentTime / video.duration) * 100) + "%"; 
 
       // console.log(video.currentTime);
+
+      // Return the bar to the begining
+      if(video.duration == video.currentTime){
+        video.currentTime = 0;
+        this.pause();
+      }
     });
   }
 
@@ -92,8 +98,18 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     let percentage = ((offset * 100) / bar.clientWidth);
     let currentTime = (percentage * this.video.nativeElement.duration) / 100;
     
-    this.video.nativeElement.currentTime = currentTime;
+    
   }
+  
+  
+  songBar(percentage: any){
+    
+    let time = percentage * this.video.nativeElement.duration;
+    this.video.nativeElement.currentTime = time;
+
+  }
+
+
 
 
 }

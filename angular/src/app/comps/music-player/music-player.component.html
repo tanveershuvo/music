@@ -16,7 +16,7 @@
           <i class="fas fa-pause" *ngIf="isPlaying"></i>
         </span>
         <span class="repeat active"><i class="fas fa-retweet"></i></span><span class="number">{{ song.time }}</span>
-        <div class="slider" (click)="barClicked($event)" id="bar">
+        <div class="slider" id="bar" (appBar)="songBar($event)">
           <div class="full">
             <div class="finished" [style.width]="barWidth">
               <div class="circle"></div>

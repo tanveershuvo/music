@@ -47,6 +47,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       // Chagne progress width
       this.barWidth = ((video.currentTime / video.duration) * 100) + "%"; 
 
+      console.log(video.currentTime);
     });
   }
 
@@ -74,6 +75,19 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     }
   }
   
+  barClicked(e: any){
+    
+    let bar = document.getElementById("bar");
+    let offset = e.clientX - bar.offsetLeft;
+
+    if(offset < 0) return;
+    
+    // Calculate the seeking time 
+    let percentage = ((offset * 100) / bar.clientWidth);
+    let currentTime = (percentage * this.video.nativeElement.duration) / 100;
+    
+    this.video.nativeElement.currentTime = currentTime;
+  }
 
 
 }

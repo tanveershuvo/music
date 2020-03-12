@@ -68,4 +68,9 @@ export class SearchComponent implements OnInit {
         }
       );
   }
+
+  deleted(index: number){
+    this.songs.splice(index, 1);
+  }
+
 }

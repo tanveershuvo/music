@@ -7,12 +7,12 @@
     </div>
     <div class="info">
       <div class="info-row">
-        <span class="song-name">{{ song.name | titlecase }}</span
-        ><span class="song-date">{{ song.createdAtHuman }}</span>
+        <span class="song-name">{{ song.name | titlecase }}</span>
+        <span class="song-date">{{ song.createdAtHuman }}</span>
       </div>
       <div class="info-row">
-        <span class="song-length">{{ song.time }}</span
-        ><span class="song-plays"> <i class="fas fa-play"></i> 20.1k</span>
+        <span class="song-length">{{ song.time }}</span>
+        <span class="song-plays"> <i class="fas fa-play"></i> 20.1k</span>
       </div>
     </div>
   </div>
@@ -20,5 +20,7 @@
     <li *ngFor="let tag of song.tags">
       <a [routerLink]="['/search', tag]">{{ tag }}</a>
     </li>
+    <!-- Bad practice :( to be changed-->
+    <button class="delete" *ngIf="isOwner" (click)="delete()">Delete</button>
   </ul>
 </div>

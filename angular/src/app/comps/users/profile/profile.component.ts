@@ -64,4 +64,9 @@ export class ProfileComponent implements OnInit {
         }
       );
   }
+
+  delete(index: number){
+    this.songs.splice(index, 1);
+  }
+
 }

@@ -1,0 +1,14 @@
+button.delete{
+    display: block;
+    border: 0px;
+    margin-left: auto;
+    background-color: #FF5050;
+    color: white;
+    font-weight: bolder;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 4px 5px;
+    &:hover{
+        background-color: darken(#FF5050, 10);
+    }
+}

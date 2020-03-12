@@ -8,7 +8,9 @@
     <div class="close-icon" (click)="close()"><i class="fas fa-times"></i></div>
     <div class="player-container">
       <section class="user d-flex"><img [src]="song.user.pic"/>
-        <div class="user-info"><a class="username" href="#">John Doe</a><span>Song name</span></div>
+        <div class="user-info">
+          <a class="username" [routerLink]="['/user', song.user.slug]">{{ song.user.name | titlecase}}</a>
+          <span>{{ song.name }}</span></div>
       </section>
       <section class="controls d-flex">
         <span class="play" (click)="toggle()">

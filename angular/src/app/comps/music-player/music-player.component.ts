@@ -16,6 +16,9 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   currentTime: string = "0:00";
   barWidth: string = "0%";  // Player progress bar width
   volumeWidth: number = 50;  // Volume progress bar width
+  lastVolume: number = 50;  // Last volume value before muting
+  isMuted: boolean = false;
+  isLoop: boolean = false;
 
 
   constructor(private _player: MusicPlayerService) { }
@@ -31,6 +34,11 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       this.barWidth = "0%";
       this.volumeWidth = this.video.nativeElement.volume * 100;
       
+      // Disable looping
+      if(this.isLoop){
+        this.toggleLoop();
+      }
+
       this.play();
       console.log(this.song);
     });
@@ -119,6 +127,11 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   soundBar(percentage: any){
     let soundVolume = percentage * 1; // sound volume
     this.video.nativeElement.volume = soundVolume;
+    
+    if(this.isMuted){
+      this.toggleMute();
+    }
+
   }
 
   finalClick(){
@@ -127,5 +140,24 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // Mute and unmute
+  toggleMute(){
+    if(this.isMuted){
+      this.isMuted = false;
+    } else {
+      this.isMuted = true;
+    }
+    this.video.nativeElement.muted = this.isMuted;
+  }
+
+
+  toggleLoop(){
+    if(this.isLoop){
+      this.isLoop = false;
+    } else {
+      this.isLoop = true;
+    }
+    this.video.nativeElement.loop = this.isLoop;
+  }
 
 }

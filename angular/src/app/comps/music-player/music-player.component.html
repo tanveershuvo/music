@@ -15,7 +15,10 @@
           <i class="fas fa-play" *ngIf="!isPlaying"></i> 
           <i class="fas fa-pause" *ngIf="isPlaying"></i>
         </span>
-        <span class="repeat active"><i class="fas fa-retweet"></i></span><span class="number">{{ song.time }}</span>
+        <span class="repeat active" (click)="toggleLoop()">
+          <i class="fas fa-retweet" [style.opacity]="isLoop ? 1: .5"></i>
+        </span>
+        <span class="number">{{ song.time }}</span>
         <div class="slider" id="bar" (appBar)="songBar($event)" (finalClick)="finalClick()">
           <div class="full">
             <div class="finished" [style.width]="barWidth">
@@ -25,15 +28,15 @@
         </div><span class="number">{{ currentTime }}</span>
       </section>
       <section class="sound d-flex">
-        <div class="icon">
+        <div class="icon" (click)="toggleMute()">
           <!-- Volume icon -->
-          <i class="fas fa-volume-up" *ngIf="volumeWidth >= 50"></i>
-          <i class="fas fa-volume-down" *ngIf="volumeWidth < 50 && volumeWidth > 0"></i>
-          <i class="fas fa-volume-mute" *ngIf="volumeWidth == 0"></i>
+          <i class="fas fa-volume-up" *ngIf="volumeWidth >= 50 && !isMuted"></i>
+          <i class="fas fa-volume-down" *ngIf="volumeWidth < 50 && volumeWidth > 0  && !isMuted"></i>
+          <i class="fas fa-volume-mute" *ngIf="volumeWidth == 0 || isMuted" style="opacity: .8"></i>
         </div>
         <div class="slider" (appBar)="soundBar($event)">
           <div class="full">
-            <div class="finished" [style.width]="volumeWidth + '%'">
+            <div class="finished" [style.width]="isMuted ? '0%' : volumeWidth + '%'">
               <div class="circle"></div>
             </div>
           </div>

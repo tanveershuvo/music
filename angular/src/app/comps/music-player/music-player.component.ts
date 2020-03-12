@@ -15,7 +15,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   isPlaying: boolean = false;
   currentTime: string = "0:00";
   barWidth: string = "0%";  // Player progress bar width
-  volumeWidth: number = "50%";  // Volume progress bar width
+  volumeWidth: number = 50;  // Volume progress bar width
 
 
   constructor(private _player: MusicPlayerService) { }
@@ -111,13 +111,20 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     let time = percentage * this.video.nativeElement.duration;  
     this.video.nativeElement.currentTime = time;
 
+    this.video.nativeElement.pause(); 
   }
 
 
   // Change song volume
   soundBar(percentage: any){
     let soundVolume = percentage * 1; // sound volume
-    this.video.nativeElement.volume = soundVolume;    
+    this.video.nativeElement.volume = soundVolume;
+  }
+
+  finalClick(){
+    if(this.isPlaying){
+      this.video.nativeElement.play(); 
+    }
   }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = false;
   nextPage: string = null;
 
-  constructor(private _http: HttpClient, private _route: ActivatedRoute) {}
+  constructor(private _http: HttpClient, private _route: ActivatedRoute, private _router: Router) {}
 
   ngOnInit() {
     // Get the query
@@ -58,7 +58,11 @@ export class ProfileComponent implements OnInit {
           
           this.songs.push(...newSongs);
         },
-        error => {},
+        error => {
+          if(error.status == 404){
+            this._router.navigate(['/404']);
+          }
+        },
         () => {
           this.loading = false;
         }

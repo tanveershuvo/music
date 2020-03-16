@@ -9,6 +9,7 @@ import { UploadComponent } from './comps/upload/upload.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { SettingsComponent } from './comps/settings/settings.component';
 import { ChangePasswordComponent } from './comps/change-password/change-password.component';
+import { NotFoundComponent } from './comps/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path: "upload", component: UploadComponent, canActivate: [AuthGuardGuard]},
   {path: "settings", component: SettingsComponent, canActivate: [AuthGuardGuard]},
   {path: "change-password", component: ChangePasswordComponent, canActivate: [AuthGuardGuard]},
+  {path: "**", redirectTo: "404"},
+  {path: "404", component: NotFoundComponent},
 ];
 
 @NgModule({

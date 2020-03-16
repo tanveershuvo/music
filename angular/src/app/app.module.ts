@@ -25,6 +25,7 @@ import { ChangePasswordComponent } from './comps/change-password/change-password
 import { MusicPlayerComponent } from './comps/music-player/music-player.component';
 import { MusicPlayerService } from './services/music-player.service';
 import { BarDirective } from './directives/bar.directive';
+import { NotFoundComponent } from './comps/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { BarDirective } from './directives/bar.directive';
     SettingsComponent,
     ChangePasswordComponent,
     MusicPlayerComponent,
-    BarDirective
+    BarDirective,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

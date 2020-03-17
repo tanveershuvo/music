@@ -15,7 +15,7 @@ import { AuthService } from './services/auth.service';
 import { UsersComponent } from './comps/users/users.component';
 import { UserCardComponent } from './comps/users/user-card/user-card.component';
 import { SearchComponent } from './comps/search/search.component';
-import { SongCardComponent } from './song-card/song-card.component';
+import { SongCardComponent } from './comps/song-card/song-card.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
 import { BottomDirective } from './directives/bottom.directive';
 import { FetchingComponent } from './comps/fetching/fetching.component';

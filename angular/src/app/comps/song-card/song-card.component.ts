@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MusicPlayerService } from '../services/music-player.service';
-import { AuthService } from '../services/auth.service';
+import { MusicPlayerService } from '../../services/music-player.service';
+import { AuthService } from '../../services/auth.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 

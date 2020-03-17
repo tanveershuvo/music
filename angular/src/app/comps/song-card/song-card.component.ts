@@ -15,6 +15,8 @@ export class SongCardComponent implements OnInit {
   @Input("user") user: any;
   @Output("deleted") deleted: EventEmitter<any> = new EventEmitter();
   isOwner: boolean = false;
+  isPlaying: boolean = false;
+  playingSong: any = null;
 
   constructor(private _player: MusicPlayerService, private _auth: AuthService, private _http: HttpClient) { }
 
@@ -43,17 +45,42 @@ export class SongCardComponent implements OnInit {
         }
 
       }
+    }
+
+    // Playing song
+    this._player.songObserve.subscribe((song)=>{
+      this.playingSong = song;
+      this.isPlaying = this.playingSong.id == this.song.id;
+    });
+
+    // Play or Pause observer
+    this._player.playObserve.subscribe(play => {
 
       
-    }
+      if(!this.playingSong || this.playingSong.id != this.song.id) return;
+
+      this.isPlaying = play;
+
+    });
   }
 
   playSong(){
-    if(this.user){
-      this.song.user = this.user;
+
+    if(this.playingSong && this.playingSong.id == this.song.id){
+      
+      if(this.isPlaying){
+        this._player.pause();
+      } else {
+        this._player.play();
+      }
+      
+    } else {
+      this._player.emitSong(this.song);
     }
-    this._player.emitSong(this.song);
+    
   }
+  
+  
 
 
   // Delete the song

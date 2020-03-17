@@ -12,3 +12,11 @@ button.delete{
         background-color: darken(#FF5050, 10);
     }
 }
+
+.body.playing{
+    .play-icon{
+        &:hover{
+            background-color: darken(#6763FF, 5);
+        }
+    }
+}

@@ -42,6 +42,17 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       this.play();
       console.log(this.song);
     });
+
+    this._player.playObserve.subscribe( play =>{ 
+      console.log("Play:", play);
+      if(play){
+        this.video.nativeElement.play();
+        this.isPlaying = true;
+      } else {
+        this.video.nativeElement.pause();
+        this.isPlaying = false;
+      }
+    });
   }
 
   ngAfterViewInit(){
@@ -91,15 +102,16 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
 
   // Play the song
   play(){
-    this.video.nativeElement.play();
-    this.isPlaying = true;
-    console.log(this.video.nativeElement);
+    // this.video.nativeElement.play();
+    // this.isPlaying = true;
+    this._player.playObserve.next(true);
   }
 
   // Pause the song
   pause(){
-    this.video.nativeElement.pause();
-    this.isPlaying = false;
+    // this.video.nativeElement.pause();
+    // this.isPlaying = false;
+    this._player.playObserve.next(false);
   }
 
   // Play & pause the song

@@ -8,10 +8,12 @@ export class MusicPlayerService {
  
   songObserve: Subject<any> = new Subject<any>();
   playObserve: Subject<boolean> = new Subject<any>();
+  playingSong: any = null;
 
   constructor() { }
 
   emitSong(song: any){
+    this.playingSong = song;
     this.songObserve.next(song);
   }
 

@@ -48,10 +48,8 @@ export class SongCardComponent implements OnInit {
     }
 
     // Playing song
-    this._player.songObserve.subscribe((song)=>{
-      this.playingSong = song;
-      this.isPlaying = this.playingSong.id == this.song.id;
-    });
+    this._player.songObserve.subscribe(this.getPlayingSong.bind(this));
+    this.getPlayingSong(this._player.playingSong)
 
     // Play or Pause observer
     this._player.playObserve.subscribe(play => {
@@ -80,6 +78,15 @@ export class SongCardComponent implements OnInit {
     
   }
   
+  getPlayingSong(song){
+      if(song == null){
+        this.playingSong = null;
+        this.isPlaying = false;
+      } else {
+        this.playingSong = song;
+        this.isPlaying = this.playingSong.id == this.song.id;
+      }
+  }
   
 
 

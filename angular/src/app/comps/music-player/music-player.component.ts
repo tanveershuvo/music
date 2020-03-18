@@ -25,6 +25,8 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this._player.songObserve.subscribe((song)=>{
+      if(song == null) return;
+      
       this.song = song;
       this.video.nativeElement.src = this.song.path;
 
@@ -98,6 +100,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   close(){
     this.song = null;
     this.video.nativeElement.src = "";
+    this._player.songObserve.next(null);
   }
 
   // Play the song

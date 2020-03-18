@@ -2,11 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
 import { environment } from 'src/environments/environment';
+import { songSearchCardTrigger } from 'src/app/animations/animations';
 
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
-  styleUrls: ["./search.component.scss"]
+  styleUrls: ["./search.component.scss"],
+  animations: [songSearchCardTrigger]
 })
 export class SearchComponent implements OnInit {
   query: string = "";
@@ -16,6 +18,7 @@ export class SearchComponent implements OnInit {
   nextPage: string | boolean = true;
 
   noResutls: boolean = false;
+  time: number = 100;
 
   constructor(private _http: HttpClient, private _route: ActivatedRoute) {}
 
@@ -56,8 +59,14 @@ export class SearchComponent implements OnInit {
 
             return s;
           });
-          this.songs.push(...newSongs);
-          console.log("Length:", this.songs.length);
+
+          // Stagger animation
+          for(let i = 0; i < newSongs.length; i++){
+            setTimeout(()=>{
+              this.songs.push(newSongs[i]);
+            },i * this.time);
+          }
+          
           if(this.songs.length == 0){
             this.noResutls = true;
           }

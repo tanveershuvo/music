@@ -6,7 +6,7 @@
         <h1>Search for: "{{ query }}"</h1>
       </div>
     </div>
-    <div class="row" *ngFor="let song of songs; let i = index">
+    <div class="row" *ngFor="let song of songs; let i = index" @songSearchCardTrigger>
       <div class="offset-md-1"></div>
       <div class="col-10 p-0 search-song col-mdr-12">
         <div class="col-2">

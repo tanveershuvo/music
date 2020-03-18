@@ -2,11 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { songCardTrigger, fadeTrigger } from "../../../animations/animations";
 
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.scss"]
+  styleUrls: ["./profile.component.scss"],
+  animations: [songCardTrigger, fadeTrigger]
 })
 export class ProfileComponent implements OnInit {
   query: string = "";
@@ -16,6 +18,8 @@ export class ProfileComponent implements OnInit {
 
   loading: boolean = false;
   nextPage: string = null;
+
+  time: number = 100;
 
   constructor(private _http: HttpClient, private _route: ActivatedRoute, private _router: Router) {}
 
@@ -55,8 +59,15 @@ export class ProfileComponent implements OnInit {
             s.path = environment.url + s.path;
             return s;
           });
-          
-          this.songs.push(...newSongs);
+
+          // Stagger animation
+          for(let i = 0; i < newSongs.length; i++){
+            setTimeout(()=>{
+              this.songs.push(newSongs[i]);
+            },i * this.time);
+          }
+
+
         },
         error => {
           if(error.status == 404){

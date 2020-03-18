@@ -59,6 +59,25 @@ export class AuthService {
     );
   }
 
+  /**
+   * Return post request to log the user in
+   * @param email string
+   * @param password string
+   */
+  register(name: string, email: string, password: string, password_confirmation: string) {
+    let headers = new HttpHeaders().set("Accept", "application/json");
+
+    return this._http.post(
+      this.baseURL("api/register"),
+      {
+        name, email, password, password_confirmation 
+      },
+      {
+        headers: headers
+      }
+    );
+  }
+
   storeData(expires_in: number, access_token: string, refresh_token: string) {
     this.expires_in = expires_in;
     this.access_token = access_token;

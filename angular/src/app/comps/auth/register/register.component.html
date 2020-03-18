@@ -6,25 +6,49 @@
   ></i>
   <div class="form-container">
     <div class="overlay" routerLink="/"></div>
-    <form style="z-index: 50;" [formGroup]="registerForm">
+    <form style="z-index: 50;" [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
       <div class="form-group">
-        <label for="name"><span>Username</span></label>
-        <input type="text" name="name" id="name" />
+        <label for="name">
+          <span>Username</span>
+          <small class="error" *ngIf="hasError('name', 'required')">This field is required</small>
+          <small class="error" *ngIf="hasError('name', 'minlength')">Minimum characters length is 3</small>
+          <small class="error" *ngIf="hasError('name', 'maxlength')">Minimum characters length is 255</small>
+        </label>
+        <input type="text" id="name" formControlName="name" [class.invalid]="invalid('name')"/>
       </div>
       <div class="form-group">
-        <label for="email"><span>Email</span></label>
-        <input type="email" name="email" id="email" />
+        <label for="email1">
+          <span>Email</span>
+            <!-- Errors -->
+            <small class="error" *ngIf="hasError('email', 'required')">This field is required</small>
+            <small class="error" *ngIf="hasError('email', 'email')">Please enter a valid email</small>
+            <small class="error" 
+              *ngIf="!(hasError('email', 'required') || hasError('email', 'email'))&&wrongInfo">This email is already used</small>          
+        </label>
+        <input type="email" id="email1" formControlName="email" [class.invalid]="invalid('email')"/>
       </div>
       <div class="form-group">
-        <label for="password"> <span>Password</span></label>
-        <input type="password" name="password" id="password" />
+        <label for="password1"> 
+          <span>Password</span>
+          <small class="error" *ngIf="hasError('password', 'required')">This field is required</small>
+          <small class="error" *ngIf="hasError('password', 'minlength')">Minimum characters length is 6</small>
+        </label>
+        <input type="password" id="password1" formControlName="password"  [class.invalid]="invalid('password')"/>
       </div>
       <div class="form-group">
-        <label for="password"> <span>Confirm Password</span></label>
-        <input type="password" name="password" id="password" />
+        <label for="password2"> 
+          <span>Confirm Password</span>
+          <small class="error" *ngIf="hasError('password_confirmation', 'required')">This field is required</small>
+          <small class="error" *ngIf="passwordsNotMatch() && registerForm.get('password_confirmation').touched && !hasError('password_confirmation', 'required')">Passwords don't match</small>
+          
+        </label>
+        <input  type="password" 
+                id="password2" 
+                formControlName="password_confirmation" 
+                [class.invalid]="passwordsNotMatch() && registerForm.get('password_confirmation').touched"/>
       </div>
       <div class="form-group">
-        <button type="submit">Register</button>
+        <button type="submit" [disabled]="registerForm.invalid || passwordsNotMatch()">Register</button>
       </div>
       <div class="msg">
         <span>Already have an account? <a routerLink="/login">Login</a></span>

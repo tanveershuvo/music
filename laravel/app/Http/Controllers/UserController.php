@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Facades\Storage;
@@ -37,9 +39,24 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json([
-            "success"   => true
-        ], 201);
+        // 
+        $client = DB::table("oauth_clients")->where("password_client", 1)->first();
+
+        $request->request->add([
+            'grant_type'    => 'password',
+            'client_id'     => $client->id,
+            'client_secret' => $client->secret,
+            'username'      => $user->email,
+            'password'      => $request->password,
+            'scope'         => null,
+        ]);
+        
+        // Fire the internal request
+        $tokenRequest = Request::create("oauth/token", 'POST');
+
+        // Return the internal request resault
+        return Route::dispatch($tokenRequest);
+
     }
 
 

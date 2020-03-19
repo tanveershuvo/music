@@ -9,6 +9,7 @@
               <span>Email</span>
               <small class="error" *ngIf="error('email', 'email')">Invalid email</small>
               <small class="error" *ngIf="error('email', 'required')">This field is required</small>
+              <small class="error" *ngIf="wrongEmail">This email is already used</small>
             </label>
             <input type="email" id="email"  formControlName="email" [class.invalid]="hasError('email')"/>
           </div>

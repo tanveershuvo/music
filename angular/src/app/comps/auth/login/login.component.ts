@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   wrongInfo: boolean = false;
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, private _msg: MessagesService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -33,6 +34,8 @@ export class LoginComponent implements OnInit {
       (error: any)=>{
         if(error.status == 400){
           this.wrongInfo = true;
+        } else {
+          this._msg.danger("Error!", "Check you internet connection or try latter");
         }
       }
     );

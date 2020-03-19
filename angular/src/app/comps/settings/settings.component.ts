@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpHeaders, HttpClient, HttpEventType } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-settings',
@@ -20,11 +21,13 @@ export class SettingsComponent implements OnInit {
   width: number = 0;
   loading: boolean = false;
 
+  wrongEmail: boolean = false;
+
   @ViewChild("img", {static: true}) img: ElementRef;
 
   @ViewChild("file", {static: true}) imageBox: ElementRef;
 
-  constructor(private _auth: AuthService, private _http: HttpClient) { }
+  constructor(private _auth: AuthService, private _http: HttpClient, private _msg: MessagesService) { }
 
   ngOnInit() {
 
@@ -50,6 +53,11 @@ export class SettingsComponent implements OnInit {
       name: new FormControl(this.user? this.user.name : null, {validators: [Validators.required, Validators.minLength(3), Validators.maxLength(15)]}),
     });
    
+    // Email input subscriber
+    this.updateForm.get("email").statusChanges.subscribe(()=>{
+      this.wrongEmail = false;
+    });
+
 
     // Drop event
     this.imageBox.nativeElement.addEventListener("drop", (e: any) => {
@@ -96,14 +104,25 @@ export class SettingsComponent implements OnInit {
           this.width = (event.loaded / event.total) * 100;
         } else if (event.type == HttpEventType.Response) {
           this._auth.redirectProfile();
+          
+          
+          this._msg.success("Congratulations!", "Your settings updated successfully");
         }
       },
-      (err)=> {console.log(err)},
+      (err)=> {
+        console.log(err)
+        
+        if(err.status == 400){
+          this.wrongEmail = true;
+        } else {
+          this.wrongEmail = false;
+          this._msg.danger("Error!", "Check you internet connection or try latter.");
+        }
+      },
       ()=>{
         // Done
       }
     );
-
 
 
   }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,7 @@ import { MusicPlayerComponent } from './comps/music-player/music-player.componen
 import { MusicPlayerService } from './services/music-player.service';
 import { BarDirective } from './directives/bar.directive';
 import { NotFoundComponent } from './comps/not-found/not-found.component';
+import { MessagesService } from './services/messages.service';
 
 @NgModule({
   declarations: [
@@ -57,11 +60,15 @@ import { NotFoundComponent } from './comps/not-found/not-found.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }) // ToastrModule added
   ],
   providers: [
     AuthService,
-    MusicPlayerService
+    MusicPlayerService,
+    MessagesService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { MusicPlayerService } from '../../services/music-player.service';
 import { AuthService } from '../../services/auth.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-song-card',
@@ -18,7 +19,10 @@ export class SongCardComponent implements OnInit {
   isPlaying: boolean = false;
   playingSong: any = null;
 
-  constructor(private _player: MusicPlayerService, private _auth: AuthService, private _http: HttpClient) { }
+  constructor(private _player: MusicPlayerService, 
+              private _auth: AuthService, 
+              private _http: HttpClient, 
+              private _msg: MessagesService) { }
 
   ngOnInit() {
     if(this.user){
@@ -107,8 +111,12 @@ export class SongCardComponent implements OnInit {
     }).subscribe(
       ()=>{
         this.deleted.emit();
+
+        this._msg.success("Congratulations!", "Your song deleted successfully");
       },
-      ()=>{},
+      ()=>{
+        this._msg.danger("Error!", "Check you internet connection or try latter");
+      },
       ()=>{},
     );
     

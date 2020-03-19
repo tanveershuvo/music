@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   wrongInfo: boolean = false;
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, private _msg: MessagesService) { }
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -34,10 +35,15 @@ export class RegisterComponent implements OnInit {
     this._auth.register(name, email, password, password_confirmation).subscribe(
       (data: any)=>{
         this._auth.storeData(data.expires_in, data.access_token, data.refresh_token)
+
+        // Sucess message
+        this._msg.success("Congratulations!", "Your new account created successfully");
       },
       (error: any)=>{
         if(error.status == 401){
           this.wrongInfo = true;
+        } else {
+          this._msg.danger("Error!", "Check you internet connection or try latter");
         }
       }
     );

@@ -3,6 +3,7 @@ import { FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { HttpClient, HttpHeaders, HttpEventType } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: "app-upload",
@@ -25,7 +26,7 @@ export class UploadComponent implements OnInit {
   // Drop box
   @ViewChild("box", { static: true }) box: ElementRef;
 
-  constructor(private _auth: AuthService, private _http: HttpClient) {}
+  constructor(private _auth: AuthService, private _http: HttpClient, private _msg: MessagesService) {}
 
   ngOnInit() {
     this.uploadForm = new FormGroup({
@@ -130,10 +131,13 @@ export class UploadComponent implements OnInit {
           } else if (event.type == HttpEventType.Response) {
             // Redirect the user to the profile page
             this._auth.redirectProfile();
+
+            this._msg.success("Congratulations!", "Your song uploaded successfully");
           }
         },
         error => {
           console.log(error);
+          this._msg.danger("Error!", "Something went wrong uploading the song.");
         },
         () => {
           this.loading = false;

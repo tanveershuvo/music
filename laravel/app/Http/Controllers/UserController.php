@@ -151,7 +151,7 @@ class UserController extends Controller
 
     public function picUrl($user){
         if($user->pic){
-            $user->pic = Storage::url($user->pic);
+            $user->pic = asset(Storage::url($user->pic));
         }
         return $user;
     }

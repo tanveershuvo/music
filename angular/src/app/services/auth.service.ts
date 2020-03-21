@@ -122,7 +122,6 @@ export class AuthService {
    */
   storeUser(user: any) {
     this.user = user;
-    this.user.pic = this.user.pic ? this.baseURL() + this.user.pic : null;
     this.userEmitter.emit(this.user);
     localStorage.setItem("user", JSON.stringify(this.user));
   }

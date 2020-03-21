@@ -19,7 +19,7 @@
     <div class="list-container">
       <i class="fas fa-times close-icon" (click)="toggleMenu()"></i>
       <ul>
-        <li routerLinkActive="active"><a [routerLink]="['/user', user.slug]">Profile</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/user', user? user.slug : '']">Profile</a></li>
         <li routerLinkActive="active"><a [routerLink]="['/upload']">Upload</a></li>
         <li routerLinkActive="active"><a routerLink="/settings">Settings</a></li>
       </ul>

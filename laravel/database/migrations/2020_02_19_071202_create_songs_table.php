@@ -19,6 +19,7 @@ class CreateSongsTable extends Migration
             $table->string("path");
             $table->string("time");
             $table->string("tags");
+            $table->integer("played")->default(0);
             $table->softDeletes();
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");

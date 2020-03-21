@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   url: "http://music.test/", // Backend base url
   client_id: 2,     // Backend client ID
-  client_secret: "z2Fx2U3O8vowqXuYHaGrqvJJf6ITnrG5a385RAHK",  // Backend client secret
+  client_secret: "95PTgbEMIoP8kpOq6Ft83Z11EK5fXeUv5FotVI2P",  // Backend client secret
 };
 
 /*

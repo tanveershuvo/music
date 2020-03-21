@@ -32,7 +32,6 @@ export class UsersComponent implements OnInit {
     this._http.get(url).subscribe(
       (data: any) => {
         let newUsers = data.data.map(u => {
-          u.pic = u.pic ? environment.url + u.pic : null;
           return u;
         });
         this.users.push(...newUsers);

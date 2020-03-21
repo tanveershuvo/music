@@ -53,8 +53,6 @@ export class ProfileComponent implements OnInit {
           this.nextPage = res.data.next_page_url;
           
           this.user = res.user;
-          this.user.pic = this.user.pic ? environment.url + this.user.pic : null;
-
           let newSongs = res.data.data.map(s => {
             s.path = environment.url + s.path;
             return s;

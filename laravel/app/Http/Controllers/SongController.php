@@ -214,7 +214,7 @@ class SongController extends Controller
         
        
         if( !in_array($song->user->id, $this->userIDs)){
-            $song->user->pic = Storage::url($song->user->pic);
+            $song->user->pic = asset(Storage::url($song->user->pic));
             
             $this->userIDs[] = $song->user->id;
         } 

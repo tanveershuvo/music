@@ -133,6 +133,9 @@ export class UploadComponent implements OnInit {
             this._auth.redirectProfile();
 
             this._msg.success("Congratulations!", "Your song uploaded successfully");
+
+            // Increase number of songs
+            this._auth.addSongNumber(1);
           }
         },
         error => {

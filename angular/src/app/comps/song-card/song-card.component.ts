@@ -113,6 +113,9 @@ export class SongCardComponent implements OnInit {
         this.deleted.emit();
 
         this._msg.success("Congratulations!", "Your song deleted successfully");
+
+        // Decrease number of songs
+        this._auth.addSongNumber(-1);
       },
       ()=>{
         this._msg.danger("Error!", "Check you internet connection or try latter");

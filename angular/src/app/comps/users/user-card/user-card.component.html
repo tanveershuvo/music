@@ -7,7 +7,7 @@
       <span *ngIf="loggedUser && loggedUser.id == user.id" style="font-weight: 500">(You)</span>
     </a>
     <div class="artist-info">
-      <div class="songs">32 Songs</div>
-      <div class="plays"><i class="fas fa-play"></i> 50.7k</div>
+      <div class="songs">{{ user.songs_number }} Songs</div>
+      <!-- <div class="plays"><i class="fas fa-play"></i> 50.7k</div> -->
     </div>
   </div>

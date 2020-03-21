@@ -188,4 +188,17 @@ export class AuthService {
       headers: headers
     });
   }
+
+
+  /**
+   * Increase user song number
+   * @param n number
+   */
+  addSongNumber(n: number){
+    this.user.songs_number -= n;
+
+    this.userEmitter.next(this.user);
+  }
+
+
 }

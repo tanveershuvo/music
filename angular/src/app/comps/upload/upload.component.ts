@@ -141,6 +141,7 @@ export class UploadComponent implements OnInit {
         error => {
           console.log(error);
           this._msg.danger("Error!", "Something went wrong uploading the song.");
+          this.loading = false;
         },
         () => {
           this.loading = false;

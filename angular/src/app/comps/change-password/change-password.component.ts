@@ -14,6 +14,8 @@ export class ChangePasswordComponent implements OnInit {
 
   wrongPassword: boolean = false;
 
+  isLoading: boolean = false;
+
   constructor(private _auth: AuthService, private _msg: MessagesService) { }
 
   ngOnInit() {
@@ -26,6 +28,9 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword(){
     let value = this.passwordForm.value;
+
+    this.isLoading = true;
+
     this._auth.changePassword(value.old_password, value.password, value.password_confirmation).subscribe(
       (data)=>{
         this._auth.redirectProfile();
@@ -38,8 +43,11 @@ export class ChangePasswordComponent implements OnInit {
           
           this._msg.danger("Error!", "Check your internet connection or try latter");
         }
+        this.isLoading = false;
       },
-      ()=>{},
+      ()=>{
+        this.isLoading = false;
+      },
     );
   }
 

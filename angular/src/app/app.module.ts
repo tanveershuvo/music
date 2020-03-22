@@ -30,6 +30,7 @@ import { MusicPlayerService } from './services/music-player.service';
 import { BarDirective } from './directives/bar.directive';
 import { NotFoundComponent } from './comps/not-found/not-found.component';
 import { MessagesService } from './services/messages.service';
+import { LoadingButtonComponent } from './comps/loading-button/loading-button.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MessagesService } from './services/messages.service';
     ChangePasswordComponent,
     MusicPlayerComponent,
     BarDirective,
-    NotFoundComponent
+    NotFoundComponent,
+    LoadingButtonComponent
   ],
   imports: [
     BrowserModule,

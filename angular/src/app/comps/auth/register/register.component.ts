@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   wrongInfo: boolean = false;
 
+  isLoading: boolean = false;
+
   constructor(private _auth: AuthService, private _msg: MessagesService) { }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class RegisterComponent implements OnInit {
     let password = this.registerForm.value.password;
     let password_confirmation = this.registerForm.value.password_confirmation;
 
+    this.isLoading = true;
     // Log the use in
     this._auth.register(name, email, password, password_confirmation).subscribe(
       (data: any)=>{
@@ -45,6 +48,10 @@ export class RegisterComponent implements OnInit {
         } else {
           this._msg.danger("Error!", "Check you internet connection or try latter");
         }
+        this.isLoading = false;
+      },
+      ()=>{
+        this.isLoading = false;
       }
     );
 

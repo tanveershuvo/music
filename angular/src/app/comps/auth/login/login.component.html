@@ -28,7 +28,10 @@
         <input [class.invalid]="invalid('password') || wrongInfo" type="password" id="password" formControlName="password" />
       </div>
       <div class="form-group">
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button type="submit" [disabled]="loginForm.invalid || isLoading">
+          <span *ngIf="!isLoading">Login</span>
+          <app-loading-button *ngIf="isLoading"></app-loading-button>
+        </button>
       </div>
       <div class="msg">
         <span

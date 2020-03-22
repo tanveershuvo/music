@@ -79,7 +79,8 @@
           </div>
           <div class="form-group col-10 col-mdr-12">
             <button type="submit" [disabled]="uploadForm.invalid || loading || !file">
-              Upload
+              <span *ngIf="!loading">Upload</span>
+              <app-loading-button *ngIf="loading"></app-loading-button>      
             </button>
           </div>
         </form>

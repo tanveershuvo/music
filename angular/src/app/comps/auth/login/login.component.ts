@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   wrongInfo: boolean = false;
 
+  isLoading: boolean = false;
+
   constructor(private _auth: AuthService, private _msg: MessagesService) { }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
 
+    this.isLoading = true;
     // Log the use in
     this._auth.login(email, password).subscribe(
       (data: any)=>{
@@ -37,6 +40,10 @@ export class LoginComponent implements OnInit {
         } else {
           this._msg.danger("Error!", "Check you internet connection or try latter");
         }
+        this.isLoading = false;
+      },
+      ()=>{
+        this.isLoading = false;
       }
     );
 

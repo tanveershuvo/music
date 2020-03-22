@@ -48,7 +48,10 @@
                 [class.invalid]="passwordsNotMatch() && registerForm.get('password_confirmation').touched"/>
       </div>
       <div class="form-group">
-        <button type="submit" [disabled]="registerForm.invalid || passwordsNotMatch()">Register</button>
+        <button type="submit" [disabled]="registerForm.invalid || passwordsNotMatch() || isLoading">
+          <span *ngIf="!isLoading">Register</span>
+          <app-loading-button *ngIf="isLoading"></app-loading-button>
+        </button>
       </div>
       <div class="msg">
         <span>Already have an account? <a routerLink="/login">Login</a></span>

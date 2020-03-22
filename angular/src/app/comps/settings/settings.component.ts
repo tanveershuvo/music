@@ -23,6 +23,8 @@ export class SettingsComponent implements OnInit {
 
   wrongEmail: boolean = false;
 
+  isLoading: boolean = false;
+
   @ViewChild("img", {static: true}) img: ElementRef;
 
   @ViewChild("file", {static: true}) imageBox: ElementRef;
@@ -89,10 +91,13 @@ export class SettingsComponent implements OnInit {
       fd.append("pic", this.file);
     }
 
+    
     let token = this._auth.getToken();
-
+    
     let headers = new HttpHeaders().set("Accept", "application/json").set("Authorization", "Bearer " + token);
     
+    this.isLoading = true;
+
     this._http.post( environment.url + "api/user/settings", fd, {
       headers: headers,
       observe: "events",
@@ -118,9 +123,11 @@ export class SettingsComponent implements OnInit {
           this.wrongEmail = false;
           this._msg.danger("Error!", "Check you internet connection or try latter.");
         }
+        this.isLoading = false;
       },
       ()=>{
         // Done
+        this.isLoading = false;
       }
     );
 

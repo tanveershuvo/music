@@ -93,6 +93,9 @@ export class AuthService {
 
     // Get user info
     this.getUserInfo();
+
+    // Redirect user to home page
+    this.redirectHome();
   }
 
   getUserInfo() {

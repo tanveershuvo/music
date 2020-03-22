@@ -23,9 +23,9 @@
       <div class="offset-md-1"></div>
     </div>
 
-    <h1 style="text-align: center;" *ngIf="noResutls">No Results</h1>
+    <h1 style="text-align: center;" *ngIf="noResutls && songs.length == 0">No Results</h1>
     <div class="col-10 mx-auto col-mdr-12">
-      <app-fetching (bottom)="search()"  *ngIf="nextPage"></app-fetching>
+      <app-fetching (bottom)="search()"  *ngIf="!last"></app-fetching>
     </div>
   </div>
 </section>

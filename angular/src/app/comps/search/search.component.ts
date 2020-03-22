@@ -18,7 +18,9 @@ export class SearchComponent implements OnInit {
   nextPage: string | boolean = true;
 
   noResutls: boolean = false;
-  time: number = 100;
+  time: number = 100; 
+  last: boolean = false;  // Last page on search
+
 
   constructor(private _http: HttpClient, private _route: ActivatedRoute) {}
 
@@ -31,6 +33,7 @@ export class SearchComponent implements OnInit {
       this.nextPage = environment.url + "api/search/" + this.query;
       this.songs = [];
       this.noResutls = false;
+      this.last = false;
       this.search();
 
     })
@@ -53,10 +56,10 @@ export class SearchComponent implements OnInit {
 
           this.nextPage = data.next_page_url;
 
+          console.log(data);
+
           let newSongs = data.data.map((s)=>{
             s.path = environment.url + s.path;
-            s.user.pic = s.user.pic ? environment.url + s.user.pic : null;
-
             return s;
           });
 
@@ -67,9 +70,14 @@ export class SearchComponent implements OnInit {
             },i * this.time);
           }
           
+          if(newSongs.length < 10){
+            this.last = true;
+          }
+
           if(this.songs.length == 0){
             this.noResutls = true;
           }
+
         },
         (error) => {},
         () => {

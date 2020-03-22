@@ -11,7 +11,7 @@ import {
 } from "@angular/animations";
 
 export let songCardTrigger = trigger('songCardTrigger', [
-  transition('* => *',[
+  transition('void => *',[
     query(".song-card", [
       animate("1s ease-in-out", keyframes([
         style({opacity: 0, transform: "translateX(-100px)"}),
@@ -22,7 +22,7 @@ export let songCardTrigger = trigger('songCardTrigger', [
   ])
 ]);
 export let songSearchCardTrigger = trigger('songSearchCardTrigger', [
-  transition('* => *',[
+  transition(':enter',[
       animate("1s ease-in-out", keyframes([
         style({opacity: 0, transform: "translateX(-100px)"}),
         style({opacity: 1, transform: "translateX(50px)"}),

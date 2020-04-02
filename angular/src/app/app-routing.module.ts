@@ -12,16 +12,13 @@ import { ChangePasswordComponent } from './comps/change-password/change-password
 import { NotFoundComponent } from './comps/not-found/not-found.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: "", component: HomeComponent, children: [
     {path: "login", component: LoginComponent},
     {path: "register", component: RegisterComponent}
   ]},
   {path: "search/:query", component: SearchComponent},
   {path: "user/:query", component: ProfileComponent},
-  {path: "upload", component: UploadComponent, canActivate: [AuthGuardGuard]},
-  {path: "settings", component: SettingsComponent, canActivate: [AuthGuardGuard]},
-  {path: "change-password", component: ChangePasswordComponent, canActivate: [AuthGuardGuard]},
   {path: "**", redirectTo: "404"},
   {path: "404", component: NotFoundComponent},
 ];

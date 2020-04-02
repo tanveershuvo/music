@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { MusicPlayerService } from 'src/app/services/music-player.service';
+import { MusicPlayerService } from 'src/app/shared/services/music-player.service';
 
 @Component({
   selector: 'app-music-player',

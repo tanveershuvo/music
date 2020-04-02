@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { HttpHeaders, HttpClient, HttpEventType } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { MessagesService } from 'src/app/services/messages.service';
+import { MessagesService } from 'src/app/shared/services/messages.service';
 
 @Component({
   selector: 'app-settings',

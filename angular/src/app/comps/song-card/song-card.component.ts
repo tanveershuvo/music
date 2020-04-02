@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MusicPlayerService } from '../../services/music-player.service';
-import { AuthService } from '../../services/auth.service';
+import { MusicPlayerService } from '../../shared/services/music-player.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { MessagesService } from 'src/app/services/messages.service';
+import { MessagesService } from 'src/app/shared/services/messages.service';
 
 @Component({
   selector: 'app-song-card',

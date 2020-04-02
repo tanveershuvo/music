@@ -14,23 +14,23 @@ import { RegisterComponent } from './comps/auth/register/register.component';
 import { NavbarComponent } from './comps/navbar/navbar.component';
 import { FooterComponent } from './comps/footer/footer.component';
 import { SearchFormComponent } from './comps/forms/search-form/search-form.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './shared/services/auth.service';
 import { UsersComponent } from './comps/users/users.component';
 import { UserCardComponent } from './comps/users/user-card/user-card.component';
 import { SearchComponent } from './comps/search/search.component';
 import { SongCardComponent } from './comps/song-card/song-card.component';
 import { ProfileComponent } from './comps/users/profile/profile.component';
-import { BottomDirective } from './directives/bottom.directive';
 import { FetchingComponent } from './comps/fetching/fetching.component';
 import { UploadComponent } from './comps/upload/upload.component';
 import { SettingsComponent } from './comps/settings/settings.component';
 import { ChangePasswordComponent } from './comps/change-password/change-password.component';
 import { MusicPlayerComponent } from './comps/music-player/music-player.component';
-import { MusicPlayerService } from './services/music-player.service';
-import { BarDirective } from './directives/bar.directive';
+import { MusicPlayerService } from './shared/services/music-player.service';
 import { NotFoundComponent } from './comps/not-found/not-found.component';
-import { MessagesService } from './services/messages.service';
+import { MessagesService } from './shared/services/messages.service';
 import { LoadingButtonComponent } from './comps/loading-button/loading-button.component';
+import { SharedModule } from './shared/modules/shared.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -46,15 +46,9 @@ import { LoadingButtonComponent } from './comps/loading-button/loading-button.co
     SearchComponent,
     SongCardComponent,
     ProfileComponent,
-    BottomDirective,
     FetchingComponent,
-    UploadComponent,
-    SettingsComponent,
-    ChangePasswordComponent,
     MusicPlayerComponent,
-    BarDirective,
-    NotFoundComponent,
-    LoadingButtonComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +59,9 @@ import { LoadingButtonComponent } from './comps/loading-button/loading-button.co
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
-    }) // ToastrModule added
+    }), // ToastrModule added
+    SharedModule,
+    UserModule
   ],
   providers: [
     AuthService,

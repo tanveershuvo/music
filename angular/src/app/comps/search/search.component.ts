@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
 import { environment } from 'src/environments/environment';
-import { songSearchCardTrigger } from 'src/app/animations/animations';
+import { songSearchCardTrigger } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: "app-search",

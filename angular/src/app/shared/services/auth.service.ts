@@ -32,7 +32,7 @@ export class AuthService {
       this.access_token = access_token;
       this.refresh_token = refresh_token;
 
-      this.storeData(expires_in, access_token, refresh_token);
+      this.storeData(expires_in, access_token, refresh_token, true);
     }
   }
 
@@ -78,7 +78,7 @@ export class AuthService {
     );
   }
 
-  storeData(expires_in: number, access_token: string, refresh_token: string) {
+  storeData(expires_in: number, access_token: string, refresh_token: string, bootstraping: boolean = false) {
     this.expires_in = expires_in;
     this.access_token = access_token;
     this.refresh_token = refresh_token;
@@ -95,7 +95,10 @@ export class AuthService {
     this.getUserInfo();
 
     // Redirect user to home page
-    // this.redirectHome();
+    if(!bootstraping){
+      this.redirectHome();
+    }
+
   }
 
   getUserInfo() {

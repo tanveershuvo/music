@@ -17,6 +17,7 @@ export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "register", component: RegisterComponent}
   ]},
+  {path: "settings", loadChildren: "./user/user.module#UserModule"},
   {path: "search/:query", component: SearchComponent},
   {path: "user/:query", component: ProfileComponent},
   {path: "**", redirectTo: "404"},

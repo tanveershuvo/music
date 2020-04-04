@@ -31,6 +31,7 @@ import { MessagesService } from './shared/services/messages.service';
 import { LoadingButtonComponent } from './comps/loading-button/loading-button.component';
 import { SharedModule } from './shared/modules/shared.module';
 import { UserModule } from './user/user.module';
+import { httpInterceptorsProviders } from './shared/interceptors';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { UserModule } from './user/user.module';
   providers: [
     AuthService,
     MusicPlayerService,
-    MessagesService
+    MessagesService,
+    httpInterceptorsProviders
   ],
   bootstrap: [AppComponent]
 })

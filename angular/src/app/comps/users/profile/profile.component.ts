@@ -67,11 +67,7 @@ export class ProfileComponent implements OnInit {
 
 
         },
-        error => {
-          if(error.status == 404){
-            this._router.navigate(['/404']);
-          }
-        },
+        error => {},
         () => {
           this.loading = false;
         }

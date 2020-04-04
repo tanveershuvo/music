@@ -42,7 +42,6 @@ export class AuthService {
    * @param password string
    */
   login(email: string, password: string) {
-    let headers = new HttpHeaders().set("Accept", "application/json");
 
     return this._http.post(
       this.baseURL("oauth/token"),
@@ -52,9 +51,6 @@ export class AuthService {
         client_secret: environment.client_secret,
         username: email,
         password: password
-      },
-      {
-        headers: headers
       }
     );
   }
@@ -65,15 +61,11 @@ export class AuthService {
    * @param password string
    */
   register(name: string, email: string, password: string, password_confirmation: string) {
-    let headers = new HttpHeaders().set("Accept", "application/json");
 
     return this._http.post(
       this.baseURL("api/register"),
       {
         name, email, password, password_confirmation 
-      },
-      {
-        headers: headers
       }
     );
   }
@@ -102,17 +94,11 @@ export class AuthService {
   }
 
   getUserInfo() {
-    let headers = new HttpHeaders()
-      .set("Accept", "application/json")
-      .set("Authorization", "Bearer " + this.access_token);
 
     this._http
       .post(
         this.baseURL("api/me"),
-        {},
-        {
-          headers: headers
-        }
+        {}
       )
       .subscribe(
         (user: any) => {
@@ -181,16 +167,11 @@ export class AuthService {
   }
 
   changePassword(old: string, newPassword: string, confirm: string) {
-    let headers = new HttpHeaders()
-      .set("Accept", "application/json")
-      .set("Authorization", "Bearer " + this.access_token);
 
     return this._http.post(environment.url + "/api/user/password", {
       old_password: old,
       password: newPassword,
       password_confirmation: confirm
-    }, {
-      headers: headers
     });
   }
 

@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
     });
     this._auth.statusEmitter.subscribe((status)=>{
       this.logged = status;
+      this.showMenu = false;
     });
     this.logged = this._auth.logged;
     this.user = this._auth.user;

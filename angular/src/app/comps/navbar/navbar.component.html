@@ -14,7 +14,7 @@
     </div>
   </nav>
 
-  <aside class="side-menu" style="display:block;" *ngIf="showMenu && logged">
+  <aside class="side-menu" style="display:block; z-index: 99999" *ngIf="showMenu && logged">
     <div class="overlay" (click)="toggleMenu()"></div>
     <div class="list-container">
       <i class="fas fa-times close-icon" (click)="toggleMenu()"></i>

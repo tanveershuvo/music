@@ -28,6 +28,8 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     this._player.songObserve.subscribe((song)=>{
       if(song == null) return;
       
+      let storedVolume = localStorage.getItem("volume");
+
       this.song = song;
       this.video.nativeElement.src = this.song.path;
 
@@ -35,8 +37,10 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
       this.isPlaying = false;
       this.currentTime = "0:00";
       this.barWidth = "0%";
+      this.video.nativeElement.volume = storedVolume ? storedVolume : 1;
       this.volumeWidth = this.video.nativeElement.volume * 100;
       
+
       // Disable looping
       if(this.isLoop){
         this.toggleLoop();
@@ -105,6 +109,9 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
 
         // Get width percentage
         this.volumeWidth = volume * 100;
+
+        // Store the volume in localstorage
+        localStorage.setItem("volume", volume);
     })
 
 

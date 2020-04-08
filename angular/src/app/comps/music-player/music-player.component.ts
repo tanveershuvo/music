@@ -65,7 +65,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
     // Subscribe to user
     this._auth.userEmitter.subscribe(user =>{
 
-      if(!this.song)  return;
+      if(!this.song || !this.song.user)  return;
 
       if(this.song.user.id == user.id){
         this.song.user = user;
@@ -121,7 +121,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   close(){
     this.song = null;
     this.video.nativeElement.src = "";
-    this._player.songObserve.next(null);
+    this._player.emitSong(null);
   }
 
   // Play the song

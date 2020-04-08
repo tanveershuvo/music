@@ -14,6 +14,7 @@ export class MusicPlayerService {
 
   emitSong(song: any){
     this.playingSong = song;
+    console.log("Service song:", this.playingSong);
     this.songObserve.next(song);
   }
 

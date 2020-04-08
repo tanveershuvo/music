@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MusicPlayerService } from 'src/app/shared/services/music-player.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-music-player',
@@ -21,7 +22,7 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
   isLoop: boolean = false;
 
 
-  constructor(private _player: MusicPlayerService) { }
+  constructor(private _player: MusicPlayerService, private _auth: AuthService) { }
 
   ngOnInit() {
     this._player.songObserve.subscribe((song)=>{
@@ -55,6 +56,19 @@ export class MusicPlayerComponent implements OnInit, AfterViewInit {
         this.isPlaying = false;
       }
     });
+
+
+    // Subscribe to user
+    this._auth.userEmitter.subscribe(user =>{
+
+      if(!this.song)  return;
+
+      if(this.song.user.id == user.id){
+        this.song.user = user;
+      }
+
+    })
+
   }
 
   ngAfterViewInit(){

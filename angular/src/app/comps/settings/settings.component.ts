@@ -91,23 +91,22 @@ export class SettingsComponent implements OnInit {
       fd.append("pic", this.file);
     }
 
-    
-    let token = this._auth.getToken();
-    
-    let headers = new HttpHeaders().set("Accept", "application/json").set("Authorization", "Bearer " + token);
-    
+        
     this.isLoading = true;
 
     this._http.post( environment.url + "api/user/settings", fd, {
-      headers: headers,
       observe: "events",
       reportProgress: true
     })
     .subscribe(
-      (event)=>{
+      (event: any)=>{
         if(event.type == HttpEventType.UploadProgress){
           this.width = (event.loaded / event.total) * 100;
         } else if (event.type == HttpEventType.Response) {
+          
+          // Store user
+          this._auth.storeUser(event.body.user);
+
           this._auth.redirectProfile();
           
           

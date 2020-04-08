@@ -24,7 +24,7 @@ import { MessagesService } from '../shared/services/messages.service';
         UserRoutingModule
     ],
     providers: [
-        AuthService,
+        // AuthService,
         MessagesService,
     ]
 })

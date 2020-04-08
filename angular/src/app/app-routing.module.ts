@@ -10,12 +10,13 @@ import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { SettingsComponent } from './comps/settings/settings.component';
 import { ChangePasswordComponent } from './comps/change-password/change-password.component';
 import { NotFoundComponent } from './comps/not-found/not-found.component';
+import { NotAuthGuard } from './guards/not-auth.guard';
 
 
 export const routes: Routes = [
   {path: "", component: HomeComponent, children: [
-    {path: "login", component: LoginComponent},
-    {path: "register", component: RegisterComponent}
+    {path: "login", component: LoginComponent, canActivate: [NotAuthGuard]},
+    {path: "register", component: RegisterComponent, canActivate: [NotAuthGuard]}
   ]},
   {path: "settings", loadChildren: "./user/user.module#UserModule"},
   {path: "search/:query", component: SearchComponent},

@@ -7,7 +7,7 @@
     
     <div class="close-icon" (click)="close()"><i class="fas fa-times"></i></div>
     <div class="player-container">
-      <section class="user d-flex"><img [src]="song.user.pic"/>
+      <section class="user d-flex"><img [src]="song.user.pic ? song.user.pic : 'assets/images/placeholder.png'"/>
         <div class="user-info">
           <a class="username" [routerLink]="['/user', song.user.slug]">{{ song.user.name | titlecase}}</a>
           <span>{{ song.name }}</span></div>

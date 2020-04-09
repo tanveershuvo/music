@@ -32,6 +32,7 @@ import { LoadingButtonComponent } from './comps/loading-button/loading-button.co
 import { SharedModule } from './shared/modules/shared.module';
 import { UserModule } from './user/user.module';
 import { httpInterceptorsProviders } from './shared/interceptors';
+import { TimePipe } from './shared/pipes/time.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { httpInterceptorsProviders } from './shared/interceptors';
     ProfileComponent,
     FetchingComponent,
     MusicPlayerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TimePipe
   ],
   imports: [
     BrowserModule,

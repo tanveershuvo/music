@@ -11,7 +11,7 @@
         <span class="song-date">{{ song.createdAtHuman }}</span>
       </div>
       <div class="info-row">
-        <span class="song-length">{{ song.time }}</span>
+        <span class="song-length">{{ song.time | songTime }}</span>
         <!-- <span class="song-plays"> <i class="fas fa-play"></i> 20.1k</span> -->
       </div>
     </div>

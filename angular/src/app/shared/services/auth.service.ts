@@ -158,7 +158,15 @@ export class AuthService {
     this.access_token = null;
     this.refresh_token = null;
 
-    localStorage.clear();
+    // Store the song player values
+    let volume = localStorage.getItem("volume");
+
+    localStorage.clear(); // Clear the storage
+    
+    // Set the song player values
+    if(volume){
+      localStorage.setItem("volume", volume);
+    }
 
     this.userEmitter.emit(null);
     this.statusEmitter.emit(null);
